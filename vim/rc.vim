@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version: 
-"     2017.DC.2-1
-"     2017.DEVELOPING_CONFIGURATION.2-1
+"     2017.DC.2-3
+"     2017.DEVELOPING_CONFIGURATION.2-3
 "
 "  Sections:
 "  -> Options
@@ -122,6 +122,8 @@
   map <Leader>jl '
 " Quickly open a markdown buffer for scribble
   map <Leader>qq :e ~/buffer.md<cr>
+" Toggle paste mode on and off
+  map <Leader>pp :setlocal paste!<cr>
 "----------------------------------------------------------------------------------------
 " Splits
 "----------------------------------------------------------------------------------------
@@ -171,6 +173,13 @@
     autocmd!
     autocmd BufWritePost ~/Code/dec/vim/rc.vim source ~/.vimrc
   augroup END
+" Returns true if paste mode is enabled
+  function! HasPaste()
+    if &paste
+      return 'PASTE MODE  '
+    endif
+    return ''
+  endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => Sources
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
