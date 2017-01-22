@@ -124,6 +124,8 @@
   map <Leader>qq :e ~/buffer.md<cr>
 " Toggle paste mode on and off
   map <Leader>pp :setlocal paste!<cr>
+" Switch CWD to the directory of the open buffer
+  map <Leader>cd :cd %:p:h<cr>:pwd<cr>
 "----------------------------------------------------------------------------------------
 " Splits
 "----------------------------------------------------------------------------------------
