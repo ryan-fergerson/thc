@@ -5,12 +5,13 @@
 "   http://ryanf.tech
 "
 " Version: 
-"   2017.DC.1
-"   2017.DEVELOPING_CONFIGURATION.1
+"   2017.DC.2
+"   2017.DEVELOPING_CONFIGURATION.2
 "
 " Sections:
 "   -> Options
 "   -> General
+"   -> Leader Magic
 "   -> Helper Functions
 "   -> Sources
 "
@@ -52,7 +53,6 @@ set undolevels=1000            " 'ul'     maximum number of changes that can be 
 set visualbell                 " 'vb'     use visual bell instead of beeping
 set wrap                       "          long lines wrap and continue on the next line
 set wrapscan                   " 'ws'     searches wrap around the end of the file
-
 " Extra Options/More Research Needed
 "set cursorcolumn              " 'cuc'    highlight the screen column of the cursor
 "set cursorline                " 'cul'    highlight the screen line of the cursor
@@ -61,7 +61,6 @@ set wrapscan                   " 'ws'     searches wrap around the end of the fi
 "set paste                     "          allow pasting text
 "set pastetoggle               " 'pt'     key code that causes 'paste' to toggle
 "set undodir                   " 'udir'   where to store undo files
-
 " MacVim
 "set columns=9999              " 'co'     number of columns in the display
 "set fullscreen                " 'fu'     let vim cover the whole screen (MacVim only)
@@ -69,26 +68,57 @@ set wrapscan                   " 'ws'     searches wrap around the end of the fi
 "set linespace                 " 'lsp'    number of pixel lines to use between characters
 "set macligatures              "          display ligatures (MacVim GUI only)
 "set macmeta                   " 'mmta'   use option as meta key (MacVim GUI only)
-
+"let g:mapleader = ' '
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "filetype plugin on             "          Enable filetype plugins
 "filetype indent on             "          Enable filetype plugins
 "source ~/.vim/plugins.vim      "          Source vundle plugins
-
 " Treat long lines as break lines 
 " (useful for moving around in them)
 map j gj
 map k gk
 " Easy escape
 map! .. <Esc>
+vmap .. <Esc>
 " Remap VIM 0 to first non-blank character
 map 0 ^
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Leader Magic
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" The spacebar is the largest key, making it the leader 
+" key makes it easy for both thumbs to access it and it
+" also enables ALL keys to be used for leader combinations
+let mapleader = ' '
+" Easy edit vimrc and plugins
+" nmap <Leader>ee :tabedit ~/.vim/plugins.vim <bar> vsp ~/.vimrc<cr>
+" nmap <Leader>ep :tabedit ~/.vim/plugins.vim<cr>
+nmap <Leader>ev :tabedit ~/Code/dec/vim/rc.vim<cr>
+nmap <Leader>eV :tabedit ~/.vimrc<cr>
+" Fast help
+nmap <Leader>hd <C-]>
+nmap <Leader>hb <C-o>
+nmap <Leader>hh :help<cr>:winc T<cr>
+nmap <Leader>hf :help 
+" Fast save
+nmap <Leader>w :w!<cr>
+" Easy visual-block mode
+nmap <Leader>vv <c-v>
+" Easy redo (undo undo)
+nmap <Leader>uu <c-r>
+" Disable highlight
+map <Leader><cr> :noh<cr>
+" Easy marks (jump to exact spot)
+map <Leader>jj `
+" Easy marks (jump to line)
+map <Leader>jl '
+" Quickly open a markdown buffer for scribble
+map <Leader>qq :e ~/buffer.md<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -110,7 +140,13 @@ function! VisualSelection(direction, extra_filter) range
   let @/ = l:pattern
   let @" = l:saved_reg
 endfunction
+" Automatically source vimrc on save
+augroup autosourcing
+  autocmd!
+  autocmd BufWritePost ~/Code/dec/vim/rc.vim source ~/.vimrc
+augroup END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Sources
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://github.com/amix/vimrc
+" https://laracasts.com/series/vim-mastery
