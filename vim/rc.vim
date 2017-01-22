@@ -26,8 +26,10 @@
   set cmdheight=1                " 'ch'     number of lines to use for the command-line
   set colorcolumn=70             " 'cc'     columns to highlight
   set copyindent                 " 'ci'     make 'autoindent' use existing indent structure
+  set encoding=utf-8             " 'enc'    encoding used internally
   set errorbells                 " 'eb'     ring the bell for error messages
   set expandtab                  " 'et'     use spaces when <Tab> is inserted
+  set fileformats=mac,unix,dos   " 'ffs'    automatically detected values for 'fileformat'
   set gdefault                   " 'gd'     the ':substitute' flag 'g' is default on
   set history=1000               " 'hi'     number of command-lines that are remembered
   set hlsearch                   " 'hls'    highlight matches with last search pattern
@@ -38,6 +40,9 @@
   set mouse=a                    "          enable the use of mouse clicks
   set mousefocus                 " 'mousef' keyboard focus follows the mouse
   set mousehide                  " 'mh'     hide mouse pointer while typing
+  set nobackup                   " 'bk'	    DON'T keep backup file after overwriting a file
+  set noswapfile                 " 'swf'    DON'T use a swapfile for buffers
+  set nowritebackup              " 'wb'	    DON'T make a backup before overwriting a file
   set number                     " 'nu'     print the line number in front of each line
   set numberwidth=2              " 'nuw'    number of columns used for the line number
   set relativenumber             " 'rnu'    show relative line number in front of each line
@@ -46,12 +51,14 @@
   set showmatch                  " 'sm'     briefly jump to matching bracket if insert one
   set showmode                   " 'smd'    message on status line to show current mode
   set smartcase                  " 'scs'    no ignore case when pattern has uppercase
+  set smartindent                " 'si'	    smart autoindenting for C programs
   set smarttab                   " 'sta'    use 'shiftwidth' when inserting <Tab>
   set softtabstop=2              " 'sts'    number of spaces that <Tab> uses while editing
   set splitbelow                 " 'sb'     new window from split is below the current one
   set splitright                 " 'spr'    new window is put right of the current one
   set tabstop=2                  " 'ts'     number of spaces that <Tab> in file uses
   set undolevels=1000            " 'ul'     maximum number of changes that can be undone
+  set viminfo^=%                 " 'vi'	    use .viminfo file upon startup and exiting
   set visualbell                 " 'vb'     use visual bell instead of beeping
   set wrap                       "          long lines wrap and continue on the next line
   set wrapscan                   " 'ws'     searches wrap around the end of the file
@@ -91,6 +98,14 @@
 " Super useful! From an idea by Michael Naumann
   vnoremap <silent> * :call VisualSelection('f', '')<CR>
   vnoremap <silent> # :call VisualSelection('b', '')<CR>
+" Syntax highlighting
+  syntax enable 
+  try
+    colorscheme evening
+    "colorscheme hybrid_reverse
+    "colorscheme onedark
+  catch
+  endtry
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => Leader Magic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
