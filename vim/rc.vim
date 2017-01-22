@@ -24,7 +24,7 @@
   set backspace=indent,eol,start " 'bs'     how backspace works at start of line
   set belloff=all                " 'bo'     do not ring the bell for these reasons
   set cmdheight=1                " 'ch'     number of lines to use for the command-line
-  set colorcolumn=65             " 'cc'     columns to highlight
+  set colorcolumn=70             " 'cc'     columns to highlight
   set copyindent                 " 'ci'     make 'autoindent' use existing indent structure
   set errorbells                 " 'eb'     ring the bell for error messages
   set expandtab                  " 'et'     use spaces when <Tab> is inserted
@@ -48,6 +48,8 @@
   set smartcase                  " 'scs'    no ignore case when pattern has uppercase
   set smarttab                   " 'sta'    use 'shiftwidth' when inserting <Tab>
   set softtabstop=2              " 'sts'    number of spaces that <Tab> uses while editing
+  set splitbelow                 " 'sb'     new window from split is below the current one
+  set splitright                 " 'spr'    new window is put right of the current one
   set tabstop=2                  " 'ts'     number of spaces that <Tab> in file uses
   set undolevels=1000            " 'ul'     maximum number of changes that can be undone
   set visualbell                 " 'vb'     use visual bell instead of beeping
