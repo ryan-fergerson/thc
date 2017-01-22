@@ -119,6 +119,29 @@ map <Leader>jj `
 map <Leader>jl '
 " Quickly open a markdown buffer for scribble
 map <Leader>qq :e ~/buffer.md<cr>
+"
+" Splits
+"----------------------------------------------------------------------------------------
+" Opening/Closing splits
+  nmap <Leader>ss :vsp<cr>
+  nmap <Leader>sd :sp<cr>
+  nmap <Leader>sq :q<cr>
+  nmap <Leader>sc :q<cr>
+" Easy sqlit sizing
+  nmap <Leader>sf :winc \|<cr>
+  nmap <Leader>se :winc =<cr>
+  nmap <Leader>st :winc T<cr>
+  nmap <Leader>so :winc o<cr>
+" Easy split movement
+  nmap <Leader>sJ :winc J<cr>
+  nmap <Leader>sK :winc K<cr>
+  nmap <Leader>sH :winc H<cr>
+  nmap <Leader>sL :winc L<cr>
+" Smart way to navigate between windows
+  map <Leader>sj :winc j<cr>
+  map <Leader>sk :winc k<cr>
+  map <Leader>sh :winc h<cr>
+  map <Leader>sl :winc l<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
