@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version: 
-"     2017.DC.2-3
-"     2017.DEVELOPING_CONFIGURATION.2-3
+"     2017.DC.2-4
+"     2017.DEVELOPING_CONFIGURATION.2-4
 "
 "  Sections:
 "  -> Options
@@ -132,7 +132,7 @@
   nmap <Leader>sd :sp<cr>
   nmap <Leader>sq :q<cr>
   nmap <Leader>sc :q<cr>
-" Easy sqlit sizing
+" Easy split sizing
   nmap <Leader>sf :winc \|<cr>
   nmap <Leader>se :winc =<cr>
   nmap <Leader>st :winc T<cr>
@@ -147,6 +147,16 @@
   map <Leader>sk :winc k<cr>
   map <Leader>sh :winc h<cr>
   map <Leader>sl :winc l<cr>
+"----------------------------------------------------------------------------------------
+" Spell check
+"----------------------------------------------------------------------------------------
+" Toggle and untoggle spell checking
+  map <Leader>cc :setlocal spell!<cr>
+" Spell shortcuts
+  map <Leader>cn ]s
+  map <Leader>cp [s
+  map <Leader>ca zg
+  map <Leader>c? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => Helper Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
