@@ -10,6 +10,8 @@
 "
 " Sections:
 "   -> Options
+"   -> General
+"   -> Helper Functions
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Options
@@ -66,3 +68,44 @@ set wrapscan                   " 'ws'     searches wrap around the end of the fi
 "set linespace                 " 'lsp'    number of pixel lines to use between characters
 "set macligatures              "          display ligatures (MacVim GUI only)
 "set macmeta                   " 'mmta'   use option as meta key (MacVim GUI only)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"filetype plugin on             "          Enable filetype plugins
+"filetype indent on             "          Enable filetype plugins
+"source ~/.vim/plugins.vim      "          Source vundle plugins
+
+" Treat long lines as break lines 
+" (useful for moving around in them)
+map j gj
+map k gk
+" Easy escape
+map! .. <Esc>
+" Remap VIM 0 to first non-blank character
+map 0 ^
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :call VisualSelection('f', '')<CR>
+vnoremap <silent> # :call VisualSelection('b', '')<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Helper Functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Visual mode pressing * or # searches for the current selection
+function! VisualSelection(direction, extra_filter) range
+  let l:saved_reg = @"
+  execute "normal! vgvy"
+  let l:pattern = escape(@", '\\/.*$^~[]')
+  let l:pattern = substitute(l:pattern, "\n$", "", "")
+  if a:direction == 'b'
+    execute "normal ?" . l:pattern . "^M"
+  elseif a:direction == 'gv'
+    call CmdLine("Ag \"" . l:pattern . "\" " )
+  elseif a:direction == 'replace'
+    call CmdLine("%s" . '/'. l:pattern . '/')
+  elseif a:direction == 'f'
+    execute "normal /" . l:pattern . "^M"
+  endif
+  let @/ = l:pattern
+  let @" = l:saved_reg
+endfunction
