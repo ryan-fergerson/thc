@@ -5,8 +5,8 @@
 "   http://ryanf.tech
 "
 " Version: 
-"   2017.WC.1
-"   2017.WORKING_CONFIGURATION.1
+"   2017.DC.1
+"   2017.DEVELOPING_CONFIGURATION.1
 "
 " Sections:
 "   -> Options
@@ -24,7 +24,7 @@ set colorcolumn=65             " 'cc'     columns to highlight
 set copyindent                 " 'ci'     make 'autoindent' use existing indent structure
 set errorbells                 " 'eb'     ring the bell for error messages
 set expandtab                  " 'et'     use spaces when <Tab> is inserted
-set gdefault                   " 'gd'     the ":substitute" flag 'g' is default on
+set gdefault                   " 'gd'     the ':substitute' flag 'g' is default on
 set history=1000               " 'hi'     number of command-lines that are remembered
 set hlsearch                   " 'hls'    highlight matches with last search pattern
 set ignorecase                 " 'ic'     ignore case in search patterns
@@ -49,3 +49,20 @@ set undolevels=1000            " 'ul'     maximum number of changes that can be 
 set visualbell                 " 'vb'     use visual bell instead of beeping
 set wrap                       "          long lines wrap and continue on the next line
 set wrapscan                   " 'ws'     searches wrap around the end of the file
+
+" Extra Options/More Research Needed
+"set cursorcolumn              " 'cuc'    highlight the screen column of the cursor
+"set cursorline                " 'cul'    highlight the screen line of the cursor
+"set infercase                 " 'inf'    adjust case of match for keyword completion
+"set linebreak                 " 'lbr'    wrap long lines at a blank
+"set paste                     "          allow pasting text
+"set pastetoggle               " 'pt'     key code that causes 'paste' to toggle
+"set undodir                   " 'udir'   where to store undo files
+
+" MacVim
+"set columns=9999              " 'co'     number of columns in the display
+"set fullscreen                " 'fu'     let vim cover the whole screen (MacVim only)
+"set lines=999                 "          number of lines in the display
+"set linespace                 " 'lsp'    number of pixel lines to use between characters
+"set macligatures              "          display ligatures (MacVim GUI only)
+"set macmeta                   " 'mmta'   use option as meta key (MacVim GUI only)
