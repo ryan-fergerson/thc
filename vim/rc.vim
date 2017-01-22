@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version: 
-"     2017.DC.2-4
-"     2017.DEVELOPING_CONFIGURATION.2-4
+"     2017.DC.3
+"     2017.DEVELOPING_CONFIGURATION.3
 "
 "  Sections:
 "  -> Options
@@ -81,10 +81,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  "filetype plugin on            "          Enable filetype plugins
-  "filetype indent on            "          Enable filetype plugins
-  "source ~/.vim/plugins.vim     "          Source vundle plugins
-"----------------------------------------------------------------------------------------
+  source ~/Code/dec/vim/plugins.vim "       Source vundle plugins
+  filetype plugin indent on         "       Enable filetype plugins
 " Treat long lines as break lines 
 " (useful for moving around in them)
   map j gj
@@ -101,9 +99,9 @@
 " Syntax highlighting
   syntax enable 
   try
-    colorscheme evening
+    "colorscheme PaperColor
     "colorscheme hybrid_reverse
-    "colorscheme onedark
+    colorscheme onedark
   catch
   endtry
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -114,8 +112,8 @@
 " also enables ALL keys to be used for leader combinations
   let mapleader = ' '
 " Easy edit vimrc and plugins
-" nmap <Leader>ee :tabedit ~/.vim/plugins.vim <bar> vsp ~/.vimrc<cr>
-" nmap <Leader>ep :tabedit ~/.vim/plugins.vim<cr>
+  nmap <Leader>ee :tabedit ~/Code/dec/vim/plugins.vim <bar> vsp ~/Code/dec/vim/rc.vim<cr>
+  nmap <Leader>ep :tabedit ~/Code/dec/vim/plugins.vim<cr>
   nmap <Leader>ev :tabedit ~/Code/dec/vim/rc.vim<cr>
   nmap <Leader>eV :tabedit ~/.vimrc<cr>
 " Fast help
