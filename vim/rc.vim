@@ -163,6 +163,28 @@
   map <Leader>sh :winc h<cr>
   map <Leader>sl :winc l<cr>
 "----------------------------------------------------------------------------------------
+" Tabs & Buffers
+"----------------------------------------------------------------------------------------
+" Tabs
+  map <Leader>tn :tabnew<cr>
+  map <Leader>to :tabonly<cr>
+  map <Leader>tc :tabclose<cr>
+  map <Leader>tm :tabmove 
+  map <Leader>t<leader> :tabnext 
+" Opens a new tab with the current buffer's path
+" super useful when editing files in the same directory
+  map <Leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+" Buffers
+  map <Leader>bl :bnext<cr>
+  map <Leader>bh :bprevious<cr>
+  map <Leader>bs :ls<cr>
+  map <Leader>bb :e <c-r>=expand("%:p:h")<cr>/
+  map <Leader>bn :e <c-r>=expand("%:p:h")<cr>/
+" Close the current buffer
+  map <Leader>bd :Bclose<cr>:tabclose<cr>gT
+" Close all the buffers
+  map <Leader>ba :%bd<cr>
+"----------------------------------------------------------------------------------------
 " Spell check
 "----------------------------------------------------------------------------------------
 " Toggle and untoggle spell checking
