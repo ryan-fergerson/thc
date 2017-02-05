@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version: 
-"     2017.DC.3
-"     2017.DEVELOPING_CONFIGURATION.3
+"     2017.DC.3.1
+"     2017.DEVELOPING_CONFIGURATION.3.1
 "
 "  Sections:
 "  -> Options
@@ -139,6 +139,8 @@
   map <Leader>pp :setlocal paste!<cr>
 " Switch CWD to the directory of the open buffer
   map <Leader>cd :cd %:p:h<cr>:pwd<cr>
+" Toggle wrap
+  map <Leader>tw :set wrap!<cr>
 "----------------------------------------------------------------------------------------
 " Splits
 "----------------------------------------------------------------------------------------
