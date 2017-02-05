@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version: 
-"     2017.DC.3.2
-"     2017.DEVELOPING_CONFIGURATION.3.2
+"     2017.MC.1
+"     2017.MASTER_CONFIGURATION.1
 "
 "  Sections:
 "  -> Options
