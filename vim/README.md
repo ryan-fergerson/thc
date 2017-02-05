@@ -1,11 +1,14 @@
 # Vim Configuration
 
-1. Clone repo to ~/Code
-2. Place inside ~/.vimrc
+## Clone repo
+``` sh
+git clone https://github.com/RyanFergerson/DEC.git
 ```
+## Place inside ~/.vimrc
+``` sh
 source ~/Code/DEC/vim/rc.vim
 ```
-3. Place inside ~/.gvimrc (for MacVim/gVim)
-```
+## Place inside ~/.gvimrc (for MacVim/gVim)
+``` sh
 source ~/Code/DEC/vim/rc.vim
 ```
