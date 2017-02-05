@@ -143,15 +143,17 @@
 " Splits
 "----------------------------------------------------------------------------------------
 " Opening/Closing splits
-  nmap <Leader>ss :vsp<cr>
+  nmap <Leader>ss :vnew<cr>
+  nmap <Leader>st :vsp<cr>
   nmap <Leader>sd :sp<cr>
-  nmap <Leader>sq :q<cr>
+  nmap <Leader>sb :new<cr>
+  nmap <Leader>sq :q!<cr>
   nmap <Leader>sc :q<cr>
 " Easy split sizing
   nmap <Leader>sf :winc \|<cr>
   nmap <Leader>se :winc =<cr>
-  nmap <Leader>st :winc T<cr>
   nmap <Leader>so :winc o<cr>
+  nmap <Leader>sT :winc T<cr>
 " Easy split movement
   nmap <Leader>sJ :winc J<cr>
   nmap <Leader>sK :winc K<cr>
