@@ -10,5 +10,5 @@ source ~/Code/DEC/vim/rc.vim
 ```
 ## Place inside ~/.gvimrc (for MacVim/gVim)
 ``` sh
-source ~/Code/DEC/vim/rc.vim
+source ~/Code/DEC/vim/grc.vim
 ```
