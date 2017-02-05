@@ -65,7 +65,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  source ~/Code/dec/vim/plugins.vim "       Source vundle plugins
+  source ~/Code/DEC/vim/plugins.vim "       Source vundle plugins
   filetype plugin indent on         "       Enable filetype plugins
 " Treat long lines as break lines 
 " (useful for moving around in them)
@@ -96,9 +96,9 @@
 " also enables ALL keys to be used for leader combinations
   let mapleader = ' '
 " Easy edit vimrc and plugins
-  nmap <Leader>ee :tabedit ~/Code/dec/vim/plugins.vim <bar> vsp ~/Code/dec/vim/rc.vim<cr>
-  nmap <Leader>ep :tabedit ~/Code/dec/vim/plugins.vim<cr>
-  nmap <Leader>ev :tabedit ~/Code/dec/vim/rc.vim<cr>
+  nmap <Leader>ee :tabedit ~/Code/DEC/vim/plugins.vim <bar> vsp ~/Code/DEC/vim/rc.vim<cr>
+  nmap <Leader>ep :tabedit ~/Code/DEC/vim/plugins.vim<cr>
+  nmap <Leader>ev :tabedit ~/Code/DEC/vim/rc.vim<cr>
   nmap <Leader>eV :tabedit ~/.vimrc<cr>
 " Fast help
   nmap <Leader>hd <C-]>
@@ -206,7 +206,7 @@
 " Automatically source vimrc on save
   augroup autosourcing
     autocmd!
-    autocmd BufWritePost ~/Code/dec/vim/rc.vim source ~/.vimrc
+    autocmd BufWritePost ~/Code/DEC/vim/rc.vim source ~/.vimrc
   augroup END
 " Returns true if paste mode is enabled
   function! HasPaste()
