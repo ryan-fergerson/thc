@@ -12,3 +12,7 @@ source ~/Code/DEC/vim/rc.vim
 ``` sh
 source ~/Code/DEC/vim/grc.vim
 ```
+## Place inside ~/.ideavimrc (for JetBrains)
+``` sh
+source ~/Code/DEC/vim/jetbrains.vim
+```
