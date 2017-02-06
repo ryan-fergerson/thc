@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version: 
-"     2017.DC.3-3
-"     2017.DEVELOPING_CONFIGURATION.3-3
+"     2017.DC.3-4
+"     2017.DEVELOPING_CONFIGURATION.3-4
 "
 "  Sections:
 "  -> Options
@@ -123,6 +123,9 @@
   map <Leader>cd :cd %:p:h<cr>:pwd<cr>
 " Toggle wrap
   map <Leader>tw :set wrap!<cr>
+" Marking duplicate lines
+  map <Leader>fd :%call HighlightRepeats()<cr>
+  map <Leader>fD :call HighlightRepeats()<cr>
 "----------------------------------------------------------------------------------------
 " Splits
 "----------------------------------------------------------------------------------------
@@ -217,6 +220,25 @@
   if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   endif
+" Highlight duplicates
+" http://stackoverflow.com/questions/1268032/marking-duplicate-lines
+  function! HighlightRepeats() range
+    let lineCounts = {}
+    let lineNum = a:firstline
+    while lineNum <= a:lastline
+      let lineText = getline(lineNum)
+      if lineText != ""
+        let lineCounts[lineText] = (has_key(lineCounts, lineText) ? lineCounts[lineText] : 0) + 1
+      endif
+      let lineNum = lineNum + 1
+    endwhile
+    exe 'syn clear Repeat'
+    for lineText in keys(lineCounts)
+      if lineCounts[lineText] >= 2
+        exe 'syn match Repeat "^' . escape(lineText, '".\^$*[]') . '$"'
+      endif
+    endfor
+  endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => Sources
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
