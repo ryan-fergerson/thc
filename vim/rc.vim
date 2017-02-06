@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version: 
-"     2017.DC.3-2
-"     2017.DEVELOPING_CONFIGURATION.3-2
+"     2017.DC.3-3
+"     2017.DEVELOPING_CONFIGURATION.3-3
 "
 "  Sections:
 "  -> Options
@@ -27,7 +27,6 @@
   set colorcolumn=70             " 'cc'     columns to highlight
   set copyindent                 " 'ci'     make 'autoindent' use existing indent structure
   set encoding=utf-8             " 'enc'    encoding used internally
-  set errorbells                 " 'eb'     ring the bell for error messages
   set expandtab                  " 'et'     use spaces when <Tab> is inserted
   set fileformats=mac,unix,dos   " 'ffs'    automatically detected values for 'fileformat'
   set gdefault                   " 'gd'     the ':substitute' flag 'g' is default on
@@ -43,7 +42,6 @@
   set nobackup                   " 'bk'	    DON'T keep backup file after overwriting a file
   set noswapfile                 " 'swf'    DON'T use a swapfile for buffers
   set nowritebackup              " 'wb'	    DON'T make a backup before overwriting a file
-  set number                     " 'nu'     print the line number in front of each line
   set numberwidth=2              " 'nuw'    number of columns used for the line number
   set relativenumber             " 'rnu'    show relative line number in front of each line
   set ruler                      " 'ru'     show cursor line and column in the status line
