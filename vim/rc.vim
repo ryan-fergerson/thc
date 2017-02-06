@@ -126,6 +126,12 @@
 " Marking duplicate lines
   map <Leader>fd :%call HighlightRepeats()<cr>
   map <Leader>fD :call HighlightRepeats()<cr>
+" Insert date
+  map <Leader>id "=strftime('%Y%m%d')<cr>P
+" Surround with single quotes and comma
+  map <Leader>fq :call SurroundWithCommas()<cr>
+" Break down SQL function
+  map <Leader>fb :call BreakSQLFunctionCall()<cr>
 "----------------------------------------------------------------------------------------
 " Splits
 "----------------------------------------------------------------------------------------
@@ -238,6 +244,13 @@
         exe 'syn match Repeat "^' . escape(lineText, '".\^$*[]') . '$"'
       endif
     endfor
+  endfunction
+" macros
+  function! SurroundWithCommas()
+    normal GI'G$A',GAkb
+  endfunction
+  function! BreakSQLFunctionCall()
+    normal f(af,a;a;a;a;a;a;a;a;a;a;a;a;;a;af';if)ij
   endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => Sources
