@@ -73,8 +73,6 @@
 " Easy escape
   map! .. <Esc>
   vmap .. <Esc>
-" Remap VIM 0 to first non-blank character
-  map 0 ^
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
   vnoremap <silent> * :call VisualSelection('f', '')<CR>
