@@ -247,7 +247,7 @@
   endfunction
 " macros
   function! SurroundWithCommas()
-    normal GI'G$A',GAÂ€kb
+    normal G$A',gvI'GA€kb
   endfunction
   function! BreakSQLFunctionCall()
     normal f(af,a;a;a;a;a;a;a;a;a;a;a;a;;a;af';if)ij
