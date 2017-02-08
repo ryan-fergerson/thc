@@ -1,3 +1,19 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  Maintainer:
+"     Ryan Fergerson
+"     email@ryanf.tech
+"     http://ryanf.tech
+"
+"  Version:
+"     2017.DC.5
+"     2017.DEVELOPING_CONFIGURATION.5
+"
+"  Sections:
+"  -> Options
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  => Options
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set hlsearch       "highlight matches with last search pattern
 set relativenumber "show the line number relative to the line with the cursor
 set ignorecase     "ignore case in search patterns
