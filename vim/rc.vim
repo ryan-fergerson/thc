@@ -133,6 +133,9 @@
   map <Leader>fq :call SurroundWithCommas()<cr>
 " Break down SQL function
   map <Leader>fb :call BreakSQLFunctionCall()<cr>
+" Move cursor down in all windows
+  map <Leader>gk :windo norm k<cr>
+  map <Leader>gj :windo norm j<cr>
 "----------------------------------------------------------------------------------------
 " Splits
 "----------------------------------------------------------------------------------------
