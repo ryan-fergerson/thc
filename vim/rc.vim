@@ -133,9 +133,11 @@
   map <Leader>fq :call SurroundWithCommas()<cr>
 " Break down SQL function
   map <Leader>fb :call BreakSQLFunctionCall()<cr>
-" Move cursor down in all windows
-  map <Leader>gk :windo norm k<cr>
-  map <Leader>gj :windo norm j<cr>
+" Bind cursor in all windows
+  map <Leader>bc :call SetCursorBind()<cr>
+  map <Leader>rc :call RemoveCursorBind()<cr>
+" Toggle cursor line
+  map <Leader>mc :set cursorline!<cr>
 "----------------------------------------------------------------------------------------
 " Splits
 "----------------------------------------------------------------------------------------
@@ -255,6 +257,15 @@
   endfunction
   function! BreakSQLFunctionCall()
     normal f(af,a;a;a;a;a;a;a;a;a;a;a;a;;a;af';if)ij
+  endfunction
+" useful for highlighting SQL insert/value combos
+  function! SetCursorBind()
+    map d :windo norm j<cr>
+    map f :windo norm k<cr>
+  endfunction
+  function! RemoveCursorBind()
+    map d d
+    map f f
   endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => Sources
