@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version:
-"     2017.DC.5
-"     2017.DEVELOPING_CONFIGURATION.5
+"     2017.DC.5-1
+"     2017.DEVELOPING_CONFIGURATION.5-1
 "
 "  Sections:
 "  -> Options
@@ -42,7 +42,7 @@
   set nobackup                   " 'bk'	    DON'T keep backup file after overwriting a file
   set noswapfile                 " 'swf'    DON'T use a swapfile for buffers
   set nowritebackup              " 'wb'	    DON'T make a backup before overwriting a file
-  set number	                   " 'nu'	    print the line number in front of each line
+  set number                     " 'nu'	    print the line number in front of each line
   set numberwidth=2              " 'nuw'    number of columns used for the line number
   set relativenumber             " 'rnu'    show relative line number in front of each line
   set ruler                      " 'ru'     show cursor line and column in the status line
@@ -59,7 +59,6 @@
   set undolevels=1000            " 'ul'     maximum number of changes that can be undone
   set viminfo^=%                 " 'vi'	    use .viminfo file upon startup and exiting
   set visualbell                 " 'vb'     use visual bell instead of beeping
-  set wrap                       "          long lines wrap and continue on the next line
   set wrapscan                   " 'ws'     searches wrap around the end of the file
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => General
@@ -80,6 +79,7 @@
   vnoremap <silent> # :call VisualSelection('b', '')<CR>
 " Syntax highlighting
   syntax enable 
+  set background=dark
   try
     "colorscheme PaperColor
     "colorscheme hybrid_reverse
