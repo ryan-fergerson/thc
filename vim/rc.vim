@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version:
-"     2017.DC.5-1
-"     2017.DEVELOPING_CONFIGURATION.5-1
+"     2017.DC.5-2
+"     2017.DEVELOPING_CONFIGURATION.5-2
 "
 "  Sections:
 "  -> Options
@@ -63,141 +63,133 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  source ~/Code/DEC/vim/vundle.vim  "       Source vundle plugins
-  source ~/Code/DEC/vim/plugins.vim "       Source plugin settings
-  filetype plugin indent on         "       Enable filetype plugins
-" Treat long lines as break lines 
-" (useful for moving around in them)
+" Source vundle plugins and settings
+  source ~/Code/DEC/vim/vundle.vim
+  source ~/Code/DEC/vim/plugins.vim
+  filetype plugin indent on
+" Treat wrapped lines as new lines
   map j gj
   map k gk
 " Easy escape
   noremap <space><space> <esc>
 " Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-  vnoremap <silent> * :call VisualSelection('f', '')<CR>
-  vnoremap <silent> # :call VisualSelection('b', '')<CR>
+  vnoremap <silent> * :call VisualSelection('f', '')<cr>
+  vnoremap <silent> # :call VisualSelection('b', '')<cr>
 " Syntax highlighting
   syntax enable 
   set background=dark
   try
-    "colorscheme PaperColor
-    "colorscheme hybrid_reverse
-    "colorscheme onedark
     colorscheme gruvbox
   catch
   endtry
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => Leader Magic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" The spacebar is the largest key, making it the leader 
-" key makes it easy for both thumbs to access it and it
-" also enables ALL keys to be used for leader combinations
+" Spacebar is the largest key, making it the leader makes
+" it easy for ALL keys to be used for leader combinations
   let mapleader = ' '
 " Easy edit vimrc and plugins
-  nmap <Leader>ee :tabedit ~/Code/DEC/vim/vundle.vim<bar>vsp ~/Code/DEC/vim/rc.vim<cr>
-  nmap <Leader>ep :tabedit ~/Code/DEC/vim/vundle.vim<bar>vsp ~/Code/DEC/vim/plugins.vim<cr>
-  nmap <Leader>ev :tabedit ~/Code/DEC/vim/rc.vim<cr>
-  nmap <Leader>eV :tabedit ~/.vimrc<cr>
+  nmap <leader>ee :tabedit ~/Code/DEC/vim/vundle.vim<bar>vsp ~/Code/DEC/vim/rc.vim<cr>
+  nmap <leader>ep :tabedit ~/Code/DEC/vim/vundle.vim<bar>vsp ~/Code/DEC/vim/plugins.vim<cr>
+  nmap <leader>ev :tabedit ~/Code/DEC/vim/rc.vim<cr>
+  nmap <leader>eV :tabedit ~/.vimrc<cr>
 " Fast help
-  nmap <Leader>hd <C-]>
-  nmap <Leader>hb <C-o>
-  nmap <Leader>hh :help<cr>:winc T<cr>
-  nmap <Leader>hf :help 
+  nmap <leader>hd <c-]>
+  nmap <leader>hb <c-o>
+  nmap <leader>hh :help<cr>:winc T<cr>
+  nmap <leader>hf :help<space>
 " Fast save
-  nmap <Leader>w :w!<cr>
+  nmap <leader>w :w!<cr>
 " Easy visual-block mode
-  nmap <Leader>vv <c-v>
+  nmap <leader>vv <c-v>
 " Easy redo (undo undo)
-  nmap <Leader>uu <c-r>
+  nmap <leader>uu <c-r>
 " Disable highlight
-  map <Leader><cr> :noh<cr>
+  map <leader><cr> :noh<cr>
 " Easy marks (jump to exact spot)
-  map <Leader>jj `
+  map <leader>jj `
 " Easy marks (jump to line)
-  map <Leader>jl '
+  map <leader>jl '
 " Quickly open a markdown buffer for scribble
-  map <Leader>qq :e ~/buffer.md<cr>
+  map <leader>qq :e ~/buffer.md<cr>
 " Toggle paste mode on and off
-  map <Leader>pp :setlocal paste!<cr>
+  map <leader>pp :setlocal paste!<cr>
 " Switch CWD to the directory of the open buffer
-  map <Leader>cd :cd %:p:h<cr>:pwd<cr>
+  map <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Toggle wrap
-  map <Leader>tw :set wrap!<cr>
+  map <leader>tw :setlocal wrap!<cr>
 " Marking duplicate lines
-  map <Leader>fd :%call HighlightRepeats()<cr>
-  map <Leader>fD :call HighlightRepeats()<cr>
+  map <leader>fd :%call HighlightRepeats()<cr>
+  map <leader>fD :call HighlightRepeats()<cr>
 " Insert date
-  map <Leader>id "=strftime('%Y%m%d')<cr>P
+  map <leader>id "=strftime('%Y%m%d')<cr>P
 " Surround with single quotes and comma
-  map <Leader>fq :call SurroundWithCommas()<cr>
+  map <leader>fq :call SurroundWithCommas()<cr>
 " Break down SQL function
-  map <Leader>fb :call BreakSQLFunctionCall()<cr>
+  map <leader>fb :call BreakSQLFunctionCall()<cr>
 " Bind cursor in all windows
-  map <Leader>bc :call SetCursorBind()<cr>
-  map <Leader>rc :call RemoveCursorBind()<cr>
+  map <leader>bc :call SetCursorBind()<cr>
+  map <leader>rc :call RemoveCursorBind()<cr>
 " Toggle cursor line
-  map <Leader>mc :set cursorline!<cr>
+  map <leader>mc :set cursorline!<cr>
 "----------------------------------------------------------------------------------------
 " Splits
 "----------------------------------------------------------------------------------------
 " Opening/Closing splits
-  nmap <Leader>ss :vnew<cr>
-  nmap <Leader>sT :vsp<cr>
-  nmap <Leader>sd :sp<cr>
-  nmap <Leader>sb :new<cr>
-  nmap <Leader>sq :q!<cr>
-  nmap <Leader>sc :q<cr>
+  nmap <leader>ss :vnew<cr>
+  nmap <leader>sT :vsp<cr>
+  nmap <leader>sd :sp<cr>
+  nmap <leader>sb :new<cr>
+  nmap <leader>sq :q!<cr>
+  nmap <leader>sc :q<cr>
 " Easy split sizing
-  nmap <Leader>sf :winc \|<cr>
-  nmap <Leader>se :winc =<cr>
-  nmap <Leader>so :winc o<cr>
-  nmap <Leader>st :winc T<cr>
+  nmap <leader>sf :winc \|<cr>
+  nmap <leader>se :winc =<cr>
+  nmap <leader>so :winc o<cr>
+  nmap <leader>st :winc T<cr>
 " Easy split movement
-  nmap <Leader>sJ :winc J<cr>
-  nmap <Leader>sK :winc K<cr>
-  nmap <Leader>sH :winc H<cr>
-  nmap <Leader>sL :winc L<cr>
+  nmap <leader>sJ :winc J<cr>
+  nmap <leader>sK :winc K<cr>
+  nmap <leader>sH :winc H<cr>
+  nmap <leader>sL :winc L<cr>
 " Easy way to navigate between windows
-  map <Leader>sj :winc j<cr>
-  map <Leader>sk :winc k<cr>
-  map <Leader>sh :winc h<cr>
-  map <Leader>sl :winc l<cr>
+  map <leader>sj :winc j<cr>
+  map <leader>sk :winc k<cr>
+  map <leader>sh :winc h<cr>
+  map <leader>sl :winc l<cr>
 "----------------------------------------------------------------------------------------
 " Tabs & Buffers
 "----------------------------------------------------------------------------------------
 " Tabs
-  map <Leader>tn :tabnew<cr>
-  map <Leader>to :tabonly<cr>
-  map <Leader>tc :tabclose<cr>
-  map <Leader>tm :tabmove 
-  map <Leader>t<leader> :tabnext 
-" Opens a new tab with the current buffer's path
-" super useful when editing files in the same directory
-  map <Leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+  map <leader>tn :tabnew<cr>
+  map <leader>to :tabonly<cr>
+  map <leader>tc :tabclose<cr>
+  map <leader>tm :tabmove<space>
+" Open new tab with the current buffer's path
+  map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Buffers
-  map <Leader>bl :bnext<cr>
-  map <Leader>bh :bprevious<cr>
-  map <Leader>bs :ls<cr>
-  map <Leader>bb :e <c-r>=expand("%:p:h")<cr>/
-  map <Leader>bn :e <c-r>=expand("%:p:h")<cr>/
-" Close the current buffer
-  map <Leader>bd :Bclose<cr>:tabclose<cr>gT
+  map <leader>bl :bnext<cr>
+  map <leader>bh :bprevious<cr>
+  map <leader>bs :ls<cr>
+" Open new buffer with the current buffer's path
+  map <leader>bb :e <c-r>=expand("%:p:h")<cr>/
+  map <leader>bn :e <c-r>=expand("%:p:h")<cr>/
 " Close all the buffers
-  map <Leader>ba :%bd<cr>
+  map <leader>ba :%bd<cr>
 "----------------------------------------------------------------------------------------
 " Spell check
 "----------------------------------------------------------------------------------------
-" Toggle and untoggle spell checking
-  map <Leader>cc :setlocal spell!<cr>
-" Spell shortcuts
-  map <Leader>cn ]s
-  map <Leader>cp [s
-  map <Leader>ca zg
-  map <Leader>c? z=
+" Toggle spell checking
+  map <leader>cc :setlocal spell!<cr>
+  map <leader>cn ]s
+  map <leader>cp [s
+  map <leader>ca zg
+  map <leader>c? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => Helper Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
   function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
     execute "normal! vgvy"
@@ -250,14 +242,7 @@
       endif
     endfor
   endfunction
-" macros
-  function! SurroundWithCommas()
-    normal G$A',gvI'GA€kb
-  endfunction
-  function! BreakSQLFunctionCall()
-    normal f(af,a;a;a;a;a;a;a;a;a;a;a;a;;a;af';if)ij
-  endfunction
-" useful for highlighting SQL insert/value combos
+" For highlighting SQL insert/value combos
   function! SetCursorBind()
     map d :windo norm j<cr>
     map f :windo norm k<cr>
@@ -266,8 +251,18 @@
     map d d
     map f f
   endfunction
+"----------------------------------------------------------------------------------------
+" Saved macros
+"----------------------------------------------------------------------------------------
+  function! SurroundWithCommas()
+    normal G$A',gvI'GA€kb
+  endfunction
+  function! BreakSQLFunctionCall()
+    normal f(af,a;a;a;a;a;a;a;a;a;a;a;a;;a;af';if)ij
+  endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => Sources
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://github.com/amix/vimrc
 " https://laracasts.com/series/vim-mastery
+" http://learnvimscriptthehardway.stevelosh.com

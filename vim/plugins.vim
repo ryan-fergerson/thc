@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version:
-"     2017.DC.5-1
-"     2017.DEVELOPING_CONFIGURATION.5-1
+"     2017.DC.5-2
+"     2017.DEVELOPING_CONFIGURATION.5-2
 "
 "  Sections:
 "  -> dbext.vim
@@ -23,7 +23,7 @@
 " let g:dbext_default_profile_QA_SERVER = 'type=PGSQL:host=192.168.0.100:port=5432:dbname=testdb:user=admin'
 
 " Convert dbext result buffer to csv
-  map <Leader>mc :call DBX2CSV()<cr>
+  map <leader>mc :call DBX2CSV()<cr>
 
 " Convert dbext result buffer to csv
   function! DBX2CSV()

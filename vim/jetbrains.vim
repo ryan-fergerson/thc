@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version:
-"     2017.DC.5-1
-"     2017.DEVELOPING_CONFIGURATION.5-1
+"     2017.DC.5-2
+"     2017.DEVELOPING_CONFIGURATION.5-2
 "
 "  Sections:
 "  -> Options
@@ -24,14 +24,14 @@ set surround       "vim-surround
 
 let mapleader = ' '
 
-map <Leader>rr :action ReformatCode<CR>
-map <Leader>pp :action ParameterInfo<CR>
-map <Leader>tt :action ExpressionTypeInfo<CR>
-map <Leader>ft :action GotoTable<CR>
-map <Leader>ss :action SplitVertically<CR>
-map <Leader>sd :action SplitHorizontally<CR>
-map <Leader>fu :action ShowUsages<CR>
-map <Leader>gt :action GotoTable<CR>
-map <Leader>gs :action GotoSymbol<CR>
-map <Leader>gg :action Generate<CR>
-map <Leader>pp :action FileStructurePopup<CR>
+map <leader>rr :action ReformatCode<cr>
+map <leader>pp :action ParameterInfo<cr>
+map <leader>tt :action ExpressionTypeInfo<cr>
+map <leader>ft :action GotoTable<cr>
+map <leader>ss :action SplitVertically<cr>
+map <leader>sd :action SplitHorizontally<cr>
+map <leader>fu :action ShowUsages<cr>
+map <leader>gt :action GotoTable<cr>
+map <leader>gs :action GotoSymbol<cr>
+map <leader>gg :action Generate<cr>
+map <leader>pp :action FileStructurePopup<cr>
