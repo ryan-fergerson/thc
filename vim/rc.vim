@@ -24,7 +24,6 @@
   set backspace=indent,eol,start " 'bs'     how backspace works at start of line
   set belloff=all                " 'bo'     do not ring the bell for these reasons
   set cmdheight=1                " 'ch'     number of lines to use for the command-line
-  set colorcolumn=70             " 'cc'     columns to highlight
   set copyindent                 " 'ci'     make 'autoindent' use existing indent structure
   set encoding=utf-8             " 'enc'    encoding used internally
   set expandtab                  " 'et'     use spaces when <Tab> is inserted
@@ -132,6 +131,8 @@
   map <leader>rc :call RemoveCursorBind()<cr>
 " Toggle cursor line
   map <leader>mc :set cursorline!<cr>
+" Toggle color coloumn
+  nnoremap <leader>kc :call ColorColumnToggle()<cr>
 "----------------------------------------------------------------------------------------
 " Splits
 "----------------------------------------------------------------------------------------
@@ -250,6 +251,14 @@
   function! RemoveCursorBind()
     map d d
     map f f
+  endfunction
+" Toggle color column
+  function! ColorColumnToggle()
+    if &colorcolumn
+      setlocal colorcolumn=0
+    else
+      setlocal colorcolumn=75
+    endif
   endfunction
 "----------------------------------------------------------------------------------------
 " Saved macros
