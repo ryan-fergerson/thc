@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version:
-"     2017.DC.5-2
-"     2017.DEVELOPING_CONFIGURATION.5-2
+"     2017.DC.6
+"     2017.DEVELOPING_CONFIGURATION.6
 "
 "  Sections:
 "  -> Options
@@ -49,6 +49,7 @@
   set showmatch                  " 'sm'     briefly jump to matching bracket if insert one
   set showmode                   " 'smd'    message on status line to show current mode
   set smartcase                  " 'scs'    no ignore case when pattern has uppercase
+  set shellpipe=&>               " 'sp'     string to put output of ':make' in error file
   set smartindent                " 'si'	    smart autoindenting for C programs
   set smarttab                   " 'sta'    use 'shiftwidth' when inserting <Tab>
   set softtabstop=2              " 'sts'    number of spaces that <Tab> uses while editing
@@ -118,14 +119,14 @@
 " Toggle wrap
   map <leader>tw :setlocal wrap!<cr>
 " Marking duplicate lines
-  map <leader>fd :%call HighlightRepeats()<cr>
-  map <leader>fD :call HighlightRepeats()<cr>
+  map <leader>yd :%call HighlightRepeats()<cr>
+  map <leader>yD :call HighlightRepeats()<cr>
 " Insert date
   map <leader>id "=strftime('%Y%m%d')<cr>P
 " Surround with single quotes and comma
-  map <leader>fq :call SurroundWithCommas()<cr>
+  map <leader>yq :call SurroundWithCommas()<cr>
 " Break down SQL function
-  map <leader>fb :call BreakSQLFunctionCall()<cr>
+  map <leader>yb :call BreakSQLFunctionCall()<cr>
 " Bind cursor in all windows
   map <leader>bc :call SetCursorBind()<cr>
   map <leader>rc :call RemoveCursorBind()<cr>
@@ -186,6 +187,15 @@
   map <leader>cp [s
   map <leader>ca zg
   map <leader>c? z=
+"----------------------------------------------------------------------------------------
+" tags
+"----------------------------------------------------------------------------------------
+  nnoremap <leader><leader>f :tag<space>
+  nnoremap <leader><leader>s :tselect<cr>
+  nnoremap <leader><leader>l g]
+  nnoremap <leader>fu [I
+  nnoremap <leader>j<leader> :tnext<cr>
+  nnoremap <leader>k<leader> :tprevious<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => Helper Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
