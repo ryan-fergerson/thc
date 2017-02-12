@@ -5,14 +5,15 @@
 "     http://ryanf.tech
 "
 "  Version:
-"     2017.DC.6-1
-"     2017.DEVELOPING_CONFIGURATION.6-1
+"     2017.DC.6-2
+"     2017.DEVELOPING_CONFIGURATION.6-2
 "
 "  Sections:
 "  -> dbext.vim
 "  -> The Silver Searcher
 "  -> ctrlp.vim
 "  -> ag
+"  -> greplace.vim
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => dbext.vim
@@ -80,3 +81,15 @@
     nnoremap <silent> <buffer> go <cr>:copen<cr>
     nnoremap <silent> <buffer> q  :cclose<cr>
   endfunction
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  => greplace.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  nnoremap <leader>rr :Gsearch<space>
+  nnoremap <leader>rR :call GreplaceAndSave()<cr>
+" Global replace, save & quit
+  function! GreplaceAndSave()
+    :Greplace
+    :wall
+    :q
+  endfunction
+  let g:grep_cmd_opts = '--line-number'

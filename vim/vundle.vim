@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version:
-"     2017.DC.6-1
-"     2017.DEVELOPING_CONFIGURATION.6-1
+"     2017.DC.6-2
+"     2017.DEVELOPING_CONFIGURATION.6-2
 "
 "  Sections:
 "  -> Options
@@ -27,6 +27,7 @@ call vundle#begin()
   Plugin 'ctrlpvim/ctrlp.vim'
   Plugin 'flazz/vim-colorschemes'
   Plugin 'rking/ag.vim'
+  Plugin 'skwp/greplace.vim'
   Plugin 'tpope/vim-vinegar'
   Plugin 'vim-scripts/dbext.vim'
 call vundle#end()
