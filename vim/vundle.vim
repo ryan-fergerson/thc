@@ -23,7 +23,10 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call vundle#begin()
   Plugin 'VundleVim/Vundle.vim'
+  Plugin 'craigemery/vim-autotag'
+  Plugin 'ctrlpvim/ctrlp.vim'
   Plugin 'flazz/vim-colorschemes'
+  Plugin 'rking/ag.vim'
   Plugin 'tpope/vim-vinegar'
   Plugin 'vim-scripts/dbext.vim'
 call vundle#end()
