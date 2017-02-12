@@ -71,7 +71,8 @@
   map j gj
   map k gk
 " Easy escape
-  noremap <space><space> <esc>
+  inoremap <space><space> <esc>
+  vnoremap <space><space> <esc>
 " Visual mode pressing * or # searches for the current selection
   vnoremap <silent> * :call VisualSelection('f', '')<cr>
   vnoremap <silent> # :call VisualSelection('b', '')<cr>
