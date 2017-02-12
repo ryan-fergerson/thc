@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version:
-"     2017.DC.6
-"     2017.DEVELOPING_CONFIGURATION.6
+"     2017.DC.6-1
+"     2017.DEVELOPING_CONFIGURATION.6-1
 "
 "  Sections:
 "  -> Options
@@ -92,113 +92,119 @@
 " it easy for ALL keys to be used for leader combinations
   let mapleader = ' '
 " Easy edit vimrc and plugins
-  nmap <leader>ee :tabedit ~/Code/DEC/vim/vundle.vim<bar>vsp ~/Code/DEC/vim/rc.vim<cr>
-  nmap <leader>ep :tabedit ~/Code/DEC/vim/vundle.vim<bar>vsp ~/Code/DEC/vim/plugins.vim<cr>
-  nmap <leader>ev :tabedit ~/Code/DEC/vim/rc.vim<cr>
-  nmap <leader>eV :tabedit ~/.vimrc<cr>
+  nnoremap <leader>,, :tabedit ~/Code/DEC/vim/plugins.vim<bar>vsp ~/Code/DEC/vim/rc.vim<cr>
+  nnoremap <leader><< :tabedit ~/Code/DEC/vim/vundle.vim<bar>vsp ~/Code/DEC/vim/rc.vim<cr>
+  nnoremap <leader>,< :tabedit ~/Code/DEC/vim/vundle.vim<bar>vsp ~/Code/DEC/vim/plugins.vim<cr>
+  nnoremap <leader>,p :tabedit ~/Code/DEC/vim/plugins.vim<cr>
+  nnoremap <leader>,v :tabedit ~/Code/DEC/vim/rc.vim<cr>
+  nnoremap <leader>,V :tabedit ~/.vimrc<cr>
 " Fast help
-  nmap <leader>hd <c-]>
-  nmap <leader>hb <c-o>
-  nmap <leader>hh :help<cr>:winc T<cr>
-  nmap <leader>hf :help<space>
+  nnoremap <leader>hH :help<cr>:winc T<cr>
+  nnoremap <leader>hh <c-]>
+  nnoremap <leader>hb <c-o>
+  nnoremap <leader>hf :help<space>
 " Fast save
-  nmap <leader>w :w!<cr>
+  nnoremap <leader>w :w!<cr>
 " Easy visual-block mode
-  nmap <leader>vv <c-v>
+  nnoremap <leader>v <c-v>
 " Easy redo (undo undo)
-  nmap <leader>uu <c-r>
+  nnoremap <leader>u <c-r>
 " Disable highlight
-  map <leader><cr> :noh<cr>
+  nnoremap <leader><cr> :noh<cr>
 " Easy marks (jump to exact spot)
-  map <leader>jj `
+  nnoremap <leader>jj `
 " Easy marks (jump to line)
-  map <leader>jl '
+  nnoremap <leader>jl '
 " Quickly open a markdown buffer for scribble
-  map <leader>qq :e ~/buffer.md<cr>
-" Toggle paste mode on and off
-  map <leader>pp :setlocal paste!<cr>
+  nnoremap <leader>ee :e ~/buffer.md<cr>
 " Switch CWD to the directory of the open buffer
-  map <leader>cd :cd %:p:h<cr>:pwd<cr>
-" Toggle wrap
-  map <leader>tw :setlocal wrap!<cr>
-" Marking duplicate lines
-  map <leader>yd :%call HighlightRepeats()<cr>
-  map <leader>yD :call HighlightRepeats()<cr>
+  nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+" Mark duplicate lines
+  nnoremap <leader>td :%call HighlightRepeats()<cr>
+  nnoremap <leader>tD :call HighlightRepeats()<cr>
 " Insert date
-  map <leader>id "=strftime('%Y%m%d')<cr>P
+  nnoremap <leader>id "=strftime('%Y%m%d')<cr>P
 " Surround with single quotes and comma
-  map <leader>yq :call SurroundWithCommas()<cr>
+  nnoremap <leader>;q :call SurroundWithCommas()<cr>
 " Break down SQL function
-  map <leader>yb :call BreakSQLFunctionCall()<cr>
+  nnoremap <leader>;b :call BreakSQLFunctionCall()<cr>
 " Bind cursor in all windows
-  map <leader>bc :call SetCursorBind()<cr>
-  map <leader>rc :call RemoveCursorBind()<cr>
+  nnoremap <leader>bc :call SetCursorBind()<cr>
+  nnoremap <leader>br :windo :call RemoveCursorBind()<cr>
+" Toggle paste mode
+  nnoremap <leader>pp :setlocal paste!<cr>
 " Toggle cursor line
-  map <leader>mc :set cursorline!<cr>
+  nnoremap <leader>Tc :set cursorline!<cr>
+" Toggle cursor line in all buffers in window
+  nnoremap <leader>TC :windo :set cursorline!<cr>
 " Toggle color coloumn
-  nnoremap <leader>kc :call ColorColumnToggle()<cr>
+  nnoremap <leader>Tl :call ColorColumnToggle()<cr>
+" Toggle wrap
+  nnoremap <leader>Tw :setlocal wrap!<cr>
 "----------------------------------------------------------------------------------------
 " Splits
 "----------------------------------------------------------------------------------------
 " Opening/Closing splits
-  nmap <leader>ss :vnew<cr>
-  nmap <leader>sT :vsp<cr>
-  nmap <leader>sd :sp<cr>
-  nmap <leader>sb :new<cr>
-  nmap <leader>sq :q!<cr>
-  nmap <leader>sc :q<cr>
+  nnoremap <leader>ss :vnew<cr>
+  nnoremap <leader>sT :vsp<cr>
+  nnoremap <leader>sS :sp<cr>
+  nnoremap <leader>sb :new<cr>
+  nnoremap <leader>sq :q!<cr>
+  nnoremap <leader>sc :q<cr>
 " Easy split sizing
-  nmap <leader>sf :winc \|<cr>
-  nmap <leader>se :winc =<cr>
-  nmap <leader>so :winc o<cr>
-  nmap <leader>st :winc T<cr>
+  nnoremap <leader>sf :winc \|<cr>
+  nnoremap <leader>se :winc =<cr>
+  nnoremap <leader>so :winc o<cr>
+  nnoremap <leader>st :winc T<cr>
+  nnoremap <leader>sp :vertical resize +20<cr>
+  nnoremap <leader>sm :vertical resize -20<cr>
 " Easy split movement
-  nmap <leader>sJ :winc J<cr>
-  nmap <leader>sK :winc K<cr>
-  nmap <leader>sH :winc H<cr>
-  nmap <leader>sL :winc L<cr>
+  nnoremap <leader>sJ :winc J<cr>
+  nnoremap <leader>sK :winc K<cr>
+  nnoremap <leader>sH :winc H<cr>
+  nnoremap <leader>sL :winc L<cr>
 " Easy way to navigate between windows
-  map <leader>sj :winc j<cr>
-  map <leader>sk :winc k<cr>
-  map <leader>sh :winc h<cr>
-  map <leader>sl :winc l<cr>
+  nnoremap <leader>sj :winc j<cr>
+  nnoremap <leader>sk :winc k<cr>
+  nnoremap <leader>sh :winc h<cr>
+  nnoremap <leader>sl :winc l<cr>
 "----------------------------------------------------------------------------------------
 " Tabs & Buffers
 "----------------------------------------------------------------------------------------
 " Tabs
-  map <leader>tn :tabnew<cr>
-  map <leader>to :tabonly<cr>
-  map <leader>tc :tabclose<cr>
-  map <leader>tm :tabmove<space>
+  nnoremap <leader>tn :tabnew<cr>
+  nnoremap <leader>to :tabonly<cr>
+  nnoremap <leader>tc :tabclose<cr>
+  nnoremap <leader>tm :tabmove<space>
 " Open new tab with the current buffer's path
-  map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+  nnoremap <leader>tt :tabedit <c-r>=expand("%:p:h")<cr>/
 " Buffers
-  map <leader>bl :bnext<cr>
-  map <leader>bh :bprevious<cr>
-  map <leader>bs :ls<cr>
+  nnoremap <leader>b<leader> :bnext<cr>
+  nnoremap <leader><leader>b :bprevious<cr>
+  nnoremap <leader>bs :ls<cr>
 " Open new buffer with the current buffer's path
-  map <leader>bb :e <c-r>=expand("%:p:h")<cr>/
-  map <leader>bn :e <c-r>=expand("%:p:h")<cr>/
+  nnoremap <leader>bb :e <c-r>=expand("%:p:h")<cr>/
+  nnoremap <leader>bn :e <c-r>=expand("%:p:h")<cr>/
 " Close all the buffers
-  map <leader>ba :%bd<cr>
+  nnoremap <leader>ba :%bd<cr>
 "----------------------------------------------------------------------------------------
 " Spell check
 "----------------------------------------------------------------------------------------
 " Toggle spell checking
-  map <leader>cc :setlocal spell!<cr>
-  map <leader>cn ]s
-  map <leader>cp [s
-  map <leader>ca zg
-  map <leader>c? z=
+  nnoremap <leader>cc :setlocal spell!<cr>
+  nnoremap <leader>cn ]s
+  nnoremap <leader>cp [s
+  nnoremap <leader>ca zg
+  nnoremap <leader>c? z=
 "----------------------------------------------------------------------------------------
 " tags
 "----------------------------------------------------------------------------------------
-  nnoremap <leader><leader>f :tag<space>
-  nnoremap <leader><leader>s :tselect<cr>
-  nnoremap <leader><leader>l g]
+  nnoremap <leader>ft :tag<space>
+  nnoremap <leader>fT :tselect<cr>
+  nnoremap <leader>fj g]
   nnoremap <leader>fu [I
-  nnoremap <leader>j<leader> :tnext<cr>
-  nnoremap <leader>k<leader> :tprevious<cr>
+  nnoremap <leader>t<leader> :tnext<cr>
+  nnoremap <leader><leader>t :tprevious<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => Helper Functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -258,12 +264,12 @@
   endfunction
 " For highlighting SQL insert/value combos
   function! SetCursorBind()
-    map d :windo norm j<cr>
-    map f :windo norm k<cr>
+    nnoremap <buffer> d :windo norm j<cr>
+    nnoremap <buffer> f :windo norm k<cr>
   endfunction
   function! RemoveCursorBind()
-    map d d
-    map f f
+    nnoremap <buffer> d d
+    nnoremap <buffer> f f
   endfunction
 " Toggle color column
   function! ColorColumnToggle()

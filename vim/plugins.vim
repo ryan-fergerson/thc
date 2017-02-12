@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version:
-"     2017.DC.6
-"     2017.DEVELOPING_CONFIGURATION.6
+"     2017.DC.6-1
+"     2017.DEVELOPING_CONFIGURATION.6-1
 "
 "  Sections:
 "  -> dbext.vim
@@ -17,6 +17,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => dbext.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  let g:dbext_map_prefix = '<leader>d'
 " Profiles
 " g:dbext_default_profile_'profilename' = 'var=value:var=value:...'
   let g:dbext_default_type = 'pgsql'
@@ -26,7 +27,7 @@
 " let g:dbext_default_profile_QA_SERVER = 'type=PGSQL:host=192.168.0.100:port=5432:dbname=testdb:user=admin'
 
 " Convert dbext result buffer to csv
-  map <leader>mc :call DBX2CSV()<cr>
+  nnoremap <leader>dc :call DBX2CSV()<cr>
 
 " Convert dbext result buffer to csv
   function! DBX2CSV()
@@ -58,9 +59,9 @@
   let g:ctrlp_brief_prompt = 1
   nnoremap <leader>ff :CtrlP<cr>
   nnoremap <leader>fb :CtrlPBuffer<cr>
-  nnoremap <leader>fl :CtrlPMRU<cr>
+  nnoremap <leader>fr :CtrlPMRU<cr>
   nnoremap <leader>fx :CtrlPMixed<cr>
-  nnoremap <leader>fs :CtrlPBufTag<cr>
+  nnoremap <leader>fm :CtrlPBufTag<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => ag
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
