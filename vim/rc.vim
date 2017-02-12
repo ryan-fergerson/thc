@@ -28,6 +28,8 @@
   set encoding=utf-8             " 'enc'    encoding used internally
   set expandtab                  " 'et'     use spaces when <Tab> is inserted
   set fileformats=mac,unix,dos   " 'ffs'    automatically detected values for 'fileformat'
+  set foldlevel=2                " 'fdl'    close folds with a level higher than this
+  set foldmethod=indent          " 'fdm'    folding type
   set gdefault                   " 'gd'     the ':substitute' flag 'g' is default on
   set history=1000               " 'hi'     number of command-lines that are remembered
   set hlsearch                   " 'hls'    highlight matches with last search pattern
