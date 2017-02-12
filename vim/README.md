@@ -16,3 +16,11 @@ source ~/Code/DEC/vim/grc.vim
 ``` sh
 source ~/Code/DEC/vim/jetbrains.vim
 ```
+## Install Vundle
+``` sh
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+## Install Plugins
+``` vim
+:PluginInstall
+```
