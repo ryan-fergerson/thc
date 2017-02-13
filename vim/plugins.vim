@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version:
-"     2017.DC.6-2
-"     2017.DEVELOPING_CONFIGURATION.6-2
+"     2017.DC.7
+"     2017.DEVELOPING_CONFIGURATION.7
 "
 "  Sections:
 "  -> dbext.vim
@@ -14,6 +14,9 @@
 "  -> ctrlp.vim
 "  -> ag
 "  -> greplace.vim
+"  -> fugitive.vim
+"  -> gv.vim
+"  -> vim-gitgutter
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => dbext.vim
@@ -93,3 +96,27 @@
     :q
   endfunction
   let g:grep_cmd_opts = '--line-number'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  => fugitive.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  nnoremap <silent> <leader>gg :Gstatus<cr> :winc L<cr>
+  nnoremap <silent> <leader>gd :Gdiff<cr>
+  nnoremap <silent> <leader>gw :Gblame<cr>
+  nnoremap <silent> <leader>gp :Git pull<cr>
+  nnoremap <silent> <leader>gP :Git push<cr>
+  nnoremap <silent> <leader>gr :Gread<cr>
+  nnoremap <silent> <leader>gw :Gwrite<cr>
+  nnoremap <silent> <leader>ge :Gedit<cr>
+  nnoremap <silent> <leader>ga :Git add -p %<cr>
+  nnoremap <silent> <leader>gh :help fugitive<cr>
+  nnoremap <silent> <leader>gb :Git checkout<space>
+  nnoremap <silent> <leader>gB :Git checkout -b<space>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  => gv.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  nnoremap <silent> <leader>gl :GV<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  => vim-gitgutter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  let g:gitgutter_override_sign_column_highlight = 0
+  let g:gitgutter_sign_column_always = 1

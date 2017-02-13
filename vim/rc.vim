@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version:
-"     2017.DC.6-2
-"     2017.DEVELOPING_CONFIGURATION.6-2
+"     2017.DC.7
+"     2017.DEVELOPING_CONFIGURATION.7
 "
 "  Sections:
 "  -> Options
@@ -28,6 +28,7 @@
   set encoding=utf-8             " 'enc'    encoding used internally
   set expandtab                  " 'et'     use spaces when <Tab> is inserted
   set fileformats=mac,unix,dos   " 'ffs'    automatically detected values for 'fileformat'
+  set fillchars+=vert:\`	       " 'fcs'    characters to use for displaying special items
   set foldlevel=2                " 'fdl'    close folds with a level higher than this
   set foldmethod=indent          " 'fdm'    folding type
   set gdefault                   " 'gd'     the ':substitute' flag 'g' is default on
@@ -42,16 +43,18 @@
   set mousehide                  " 'mh'     hide mouse pointer while typing
   set nobackup                   " 'bk'	    DON'T keep backup file after overwriting a file
   set noswapfile                 " 'swf'    DON'T use a swapfile for buffers
+  set nowrap                     "          long lines wrap and continue on the next line
   set nowritebackup              " 'wb'	    DON'T make a backup before overwriting a file
   set number                     " 'nu'	    print the line number in front of each line
   set numberwidth=2              " 'nuw'    number of columns used for the line number
   set relativenumber             " 'rnu'    show relative line number in front of each line
   set ruler                      " 'ru'     show cursor line and column in the status line
+  set shellpipe=&>               " 'sp'     string to put output of ':make' in error file
   set shiftwidth=2               " 'sw'     number of spaces to use for (auto)indent step
   set showmatch                  " 'sm'     briefly jump to matching bracket if insert one
   set showmode                   " 'smd'    message on status line to show current mode
+  set signcolumn=yes             " 'scl'    when to display the sign column
   set smartcase                  " 'scs'    no ignore case when pattern has uppercase
-  set shellpipe=&>               " 'sp'     string to put output of ':make' in error file
   set smartindent                " 'si'	    smart autoindenting for C programs
   set smarttab                   " 'sta'    use 'shiftwidth' when inserting <Tab>
   set softtabstop=2              " 'sts'    number of spaces that <Tab> uses while editing
@@ -65,6 +68,10 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Spacebar is the largest key, making it the leader makes
+" it easy for ALL keys to be used for leader combinations
+" MUST set before plugins.vim (for <leader> mappings)
+  let mapleader = ' '
 " Source vundle plugins and settings
   source ~/Code/DEC/vim/vundle.vim
   source ~/Code/DEC/vim/plugins.vim
@@ -85,12 +92,24 @@
     colorscheme gruvbox
   catch
   endtry
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"----------------------------------------------------------------------------------------
+" vim-gitgutter
+"----------------------------------------------------------------------------------------
+  "highlight LineNr guibg=#d3869b
+  highlight StatusLineNC guibg=#282828
+  highlight VertSplit ctermfg=245
+  highlight VertSplit ctermbg=235
+  highlight VertSplit guifg=#928374
+  highlight VertSplit guibg=#282828
+  highlight CursorLineNR guibg=#282828
+  highlight clear SignColumn
+  highlight GitGutterAdd guibg=#282828 guifg=#689d6a
+  highlight GitGutterDelete guibg=#282828 guifg=#fb4934
+  highlight GitGutterChange guibg=#282828 guifg=#fe8019
+  highlight GitGutterChangeDelete guibg=#282828 guifg=#fabd2f
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => Leader Magic
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Spacebar is the largest key, making it the leader makes
-" it easy for ALL keys to be used for leader combinations
-  let mapleader = ' '
 " Easy edit vimrc and plugins
   nnoremap <leader>,, :tabedit ~/Code/DEC/vim/plugins.vim<bar>vsp ~/Code/DEC/vim/rc.vim<cr>
   nnoremap <leader><< :tabedit ~/Code/DEC/vim/vundle.vim<bar>vsp ~/Code/DEC/vim/rc.vim<cr>
@@ -230,7 +249,11 @@
 " Automatically source vimrc on save
   augroup autosourcing
     autocmd!
+    autocmd BufWritePost ~/Code/DEC/vim/grc.vim source ~/.vimrc
+    autocmd BufWritePost ~/Code/DEC/vim/jetbrains.vim source ~/.vimrc
+    autocmd BufWritePost ~/Code/DEC/vim/plugins.vim source ~/.vimrc
     autocmd BufWritePost ~/Code/DEC/vim/rc.vim source ~/.vimrc
+    autocmd BufWritePost ~/Code/DEC/vim/vundle.vim source ~/.vimrc
   augroup END
 " Returns true if paste mode is enabled
   function! HasPaste()
