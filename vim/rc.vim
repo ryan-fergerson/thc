@@ -28,7 +28,7 @@
   set encoding=utf-8             " 'enc'    encoding used internally
   set expandtab                  " 'et'     use spaces when <Tab> is inserted
   set fileformats=mac,unix,dos   " 'ffs'    automatically detected values for 'fileformat'
-  set fillchars+=vert:\`	       " 'fcs'    characters to use for displaying special items
+  set fillchars+=vert:\`         " 'fcs'    characters to use for displaying special items
   set foldlevel=2                " 'fdl'    close folds with a level higher than this
   set foldmethod=indent          " 'fdm'    folding type
   set gdefault                   " 'gd'     the ':substitute' flag 'g' is default on
@@ -93,7 +93,7 @@
   catch
   endtry
 "----------------------------------------------------------------------------------------
-" vim-gitgutter
+" vim-gitgutter - gruvbox
 "----------------------------------------------------------------------------------------
   "highlight LineNr guibg=#d3869b
   highlight StatusLineNC guibg=#282828
