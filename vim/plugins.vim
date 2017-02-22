@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version:
-"     2017.DC.7
-"     2017.DEVELOPING_CONFIGURATION.7
+"     2017.DC.7-1
+"     2017.DEVELOPING_CONFIGURATION.7-1
 "
 "  Sections:
 "  -> dbext.vim
@@ -17,6 +17,7 @@
 "  -> fugitive.vim
 "  -> gv.vim
 "  -> vim-gitgutter
+"  -> vim-airline
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "  => dbext.vim
@@ -37,7 +38,7 @@
   function! DBX2CSV()
     normal ddjddGdd:%s/|/,:%s/ //
   endfunction
-  
+
 " Enable syntax highlighting in result buffer
   function! DBextPostResult(db_type, buf_nr)
     if a:db_type == 'PGSQL'
@@ -119,4 +120,33 @@
 "  => vim-gitgutter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   let g:gitgutter_override_sign_column_highlight = 0
-  let g:gitgutter_sign_column_always = 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-airline
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  "let g:airline_theme='base16'
+  let g:airline_powerline_fonts = 1
+  set laststatus=2
+  let g:bufferline_echo = 0
+  set noshowmode
+  " unicode symbols
+  let g:airline_left_sep = '»'
+  let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '«'
+  let g:airline_right_sep = '◀'
+  let g:airline_symbols.linenr = '␊'
+  let g:airline_symbols.linenr = '␤'
+  let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.paste = 'Þ'
+  let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.whitespace = 'Ξ'
+  " airline symbols
+  let g:airline_left_sep = ''
+  let g:airline_left_alt_sep = ''
+  let g:airline_right_sep = ''
+  let g:airline_right_alt_sep = ''
+  let g:airline_symbols.branch = ''
+  let g:airline_symbols.readonly = ''
+  let g:airline_symbols.linenr = ''
+  let g:airline_theme='gruvbox'

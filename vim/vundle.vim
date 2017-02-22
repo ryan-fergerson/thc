@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version:
-"     2017.DC.7
-"     2017.DEVELOPING_CONFIGURATION.7
+"     2017.DC.7-1
+"     2017.DEVELOPING_CONFIGURATION.7-1
 "
 "  Sections:
 "  -> Options
@@ -26,11 +26,12 @@ call vundle#begin()
   Plugin 'airblade/vim-gitgutter'
   Plugin 'craigemery/vim-autotag'
   Plugin 'ctrlpvim/ctrlp.vim'
-  Plugin 'flazz/vim-colorschemes'
   Plugin 'junegunn/gv.vim'
+  Plugin 'morhetz/gruvbox'
   Plugin 'rking/ag.vim'
   Plugin 'skwp/greplace.vim'
   Plugin 'tpope/vim-fugitive'
   Plugin 'tpope/vim-vinegar'
+  Plugin 'vim-airline/vim-airline'
   Plugin 'vim-scripts/dbext.vim'
 call vundle#end()

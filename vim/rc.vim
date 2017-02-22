@@ -5,8 +5,8 @@
 "     http://ryanf.tech
 "
 "  Version:
-"     2017.DC.7
-"     2017.DEVELOPING_CONFIGURATION.7
+"     2017.DC.7-1
+"     2017.DEVELOPING_CONFIGURATION.7-1
 "
 "  Sections:
 "  -> Options
@@ -94,8 +94,6 @@
 "----------------------------------------------------------------------------------------
 " vim-gitgutter - gruvbox
 "----------------------------------------------------------------------------------------
-  "highlight LineNr guibg=#d3869b
-  highlight StatusLineNC guibg=#282828
   highlight VertSplit ctermfg=245
   highlight VertSplit ctermbg=235
   highlight VertSplit guifg=#928374
