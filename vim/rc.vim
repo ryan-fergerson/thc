@@ -53,7 +53,6 @@
   set shiftwidth=2               " 'sw'     number of spaces to use for (auto)indent step
   set showmatch                  " 'sm'     briefly jump to matching bracket if insert one
   set showmode                   " 'smd'    message on status line to show current mode
-  set signcolumn=yes             " 'scl'    when to display the sign column
   set smartcase                  " 'scs'    no ignore case when pattern has uppercase
   set smartindent                " 'si'	    smart autoindenting for C programs
   set smarttab                   " 'sta'    use 'shiftwidth' when inserting <Tab>
