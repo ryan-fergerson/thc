@@ -20,7 +20,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   set autoindent                 " 'ai'     take indent for new line from previous line
   set autoread                   " 'ar'     autom. read file when changed outside of Vim
-  set autowriteall               " 'awa'    as 'autowrite', but works with more commands
   set backspace=indent,eol,start " 'bs'     how backspace works at start of line
   set belloff=all                " 'bo'     do not ring the bell for these reasons
   set cmdheight=1                " 'ch'     number of lines to use for the command-line
