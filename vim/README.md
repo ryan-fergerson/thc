@@ -27,7 +27,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 # Leader system
 
-## A leader key with two characters can (with just the alphabet only) create 390,625 key combinations!
+## A leader key with two characters can (with just the alphabet alone) create 456,976 key combinations!
 Case sensitve, mixed case characters make different commands
 *  <leader>ff
 *  <leader>FF
