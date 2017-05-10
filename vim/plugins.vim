@@ -19,35 +19,34 @@
 "  -> vim-gitgutter
 "  -> vim-airline
 "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  => dbext.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" dbext.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   let g:dbext_map_prefix = '<leader>d'
-" Profiles
-" g:dbext_default_profile_'profilename' = 'var=value:var=value:...'
   let g:dbext_default_type = 'pgsql'
   let g:dbext_default_window_use_horiz = 0
-  let g:dbext_default_window_width = 80
-" Example (providing dummy information for security)
-" let g:dbext_default_profile_QA_SERVER = 'type=PGSQL:host=192.168.0.100:port=5432:dbname=testdb:user=admin'
-
-" Convert dbext result buffer to csv
-  nnoremap <leader>dc :call DBX2CSV()<cr>
-
-" Convert dbext result buffer to csv
-  function! DBX2CSV()
-    normal ddjddGdd:%s/|/,:%s/ //
-  endfunction
-
+  let g:dbext_default_window_width = 75
+"------------------------------------------------------------------
+" Profiles
+" g:dbext_default_profile_'profilename' = 'var=value:var=value:...'
+"------------------------------------------------------------------
+" place in ignore.vim
+"--------------------
 " Enable syntax highlighting in result buffer
   function! DBextPostResult(db_type, buf_nr)
     if a:db_type == 'PGSQL'
       :SQLSetType postgresql
     endif
   endfunction
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  => The Silver Searcher
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Convert dbext result buffer to csv
+  function! DBX2CSV()
+    normal ddjddGdd:%s/|/,:%s/ //
+  endfunction
+" Convert dbext result buffer to csv
+  nnoremap <leader>dc :call DBX2CSV()<cr>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" The Silver Searcher
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://robots.thoughtbot.com/faster-grepping-in-vim
   if executable('ag')
     " Use ag over grep
