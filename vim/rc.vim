@@ -1,23 +1,23 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  Maintainer:
-"     Ryan Fergerson
-"     email@ryanf.tech
-"     http://ryanf.tech
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Maintainer:
+"  Ryan Fergerson
+"  email@ryanf.tech
+"  http://ryanf.tech
 "
-"  Version:
-"     2017.DC.7-1
-"     2017.DEVELOPING_CONFIGURATION.7-1
+" Version:
+"  2017.DC.8
+"  2017.DEVELOPING_CONFIGURATION.8
 "
-"  Sections:
+" Sections:
 "  -> Options
 "  -> General
 "  -> Leader Magic
 "  -> Helper Functions
 "  -> Sources
 "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  => Options
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Options
+"""""""""
   set autoindent                 " 'ai'     take indent for new line from previous line
   set autoread                   " 'ar'     autom. read file when changed outside of Vim
   set backspace=indent,eol,start " 'bs'     how backspace works at start of line
@@ -63,36 +63,38 @@
   set viminfo^=%                 " 'vi'	    use .viminfo file upon startup and exiting
   set visualbell                 " 'vb'     use visual bell instead of beeping
   set wrapscan                   " 'ws'     searches wrap around the end of the file
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Spacebar is the largest key, making it the leader makes
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+"""""""""
+" spacebar is the largest key, making it the leader makes
 " it easy for ALL keys to be used for leader combinations
-" MUST set before plugins.vim (for <leader> mappings)
+" see README.md for more information
+"
+" set before plugins.vim (for <leader> mappings)
   let mapleader = ' '
-" Source vundle plugins and settings
+" source vundle plugins and settings
   source ~/Code/DEC/vim/vundle.vim
   source ~/Code/DEC/vim/plugins.vim
   filetype plugin indent on
-" Treat wrapped lines as new lines
+" treat wrapped lines as new lines
   map j gj
   map k gk
-" Easy escape
+" easy escape
   inoremap <space><space> <esc>
   vnoremap <space><space> <esc>
-" Visual mode pressing * or # searches for the current selection
+" visual mode pressing * or # searches for the current selection
   vnoremap <silent> * :call VisualSelection('f', '')<cr>
   vnoremap <silent> # :call VisualSelection('b', '')<cr>
-" Syntax highlighting
-  syntax enable 
+" syntax highlighting
+  syntax enable
   set background=dark
   try
     colorscheme gruvbox
   catch
   endtry
-"----------------------------------------------------------------------------------------
+"------------------------
 " vim-gitgutter - gruvbox
-"----------------------------------------------------------------------------------------
+"------------------------
   highlight VertSplit ctermfg=245
   highlight VertSplit ctermbg=235
   highlight VertSplit guifg=#928374
@@ -103,128 +105,129 @@
   highlight GitGutterDelete guibg=#282828 guifg=#fb4934
   highlight GitGutterChange guibg=#282828 guifg=#fe8019
   highlight GitGutterChangeDelete guibg=#282828 guifg=#fabd2f
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  => Leader Magic
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Easy edit vimrc and plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Leader Magic
+""""""""""""""
+" easy edit vimrc and plugins
   nnoremap <leader>,, :tabedit ~/Code/DEC/vim/plugins.vim<bar>vsp ~/Code/DEC/vim/rc.vim<cr>
   nnoremap <leader><< :tabedit ~/Code/DEC/vim/vundle.vim<bar>vsp ~/Code/DEC/vim/rc.vim<cr>
   nnoremap <leader>,< :tabedit ~/Code/DEC/vim/vundle.vim<bar>vsp ~/Code/DEC/vim/plugins.vim<cr>
   nnoremap <leader>,p :tabedit ~/Code/DEC/vim/plugins.vim<cr>
   nnoremap <leader>,v :tabedit ~/Code/DEC/vim/rc.vim<cr>
   nnoremap <leader>,V :tabedit ~/.vimrc<cr>
-" Fast help
+" fast help
   nnoremap <leader>hH :help<cr>:winc T<cr>
   nnoremap <leader>hh <c-]>
   nnoremap <leader>hb <c-o>
   nnoremap <leader>hf :help<space>
-" Fast save
+" fast save
   nnoremap <leader>w :w!<cr>
-" Easy visual-block mode
+" easy visual-block mode
   nnoremap <leader>v <c-v>
-" Easy redo (undo undo)
+" easy redo (undo undo)
   nnoremap <leader>u <c-r>
-" Disable highlight
+" disable highlight
   nnoremap <leader><cr> :noh<cr>
-" Easy marks (jump to exact spot)
+" easy marks (jump to exact spot)
   nnoremap <leader>jj `
-" Easy marks (jump to line)
+" easy marks (jump to line)
   nnoremap <leader>jl '
-" Quickly open a markdown buffer for scribble
+" quickly open a markdown buffer for scribble
   nnoremap <leader>ee :e ~/buffer.md<cr>
-" Switch CWD to the directory of the open buffer
+" switch CWD to the directory of the open buffer
   nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
-" Mark duplicate lines
+" mark duplicate lines
   nnoremap <leader>td :%call HighlightRepeats()<cr>
   nnoremap <leader>tD :call HighlightRepeats()<cr>
-" Insert date
+" insert date
   nnoremap <leader>id "=strftime('%Y%m%d')<cr>P
-" Surround with single quotes and comma
+" surround with single quotes and comma
   nnoremap <leader>;q :call SurroundWithCommas()<cr>
-" Break down SQL function
-  nnoremap <leader>;b :call BreakSQLFunctionCall()<cr>
-" Bind cursor in all windows
+" bind cursor in all windows
   nnoremap <leader>bc :call SetCursorBind()<cr>
   nnoremap <leader>br :windo :call RemoveCursorBind()<cr>
-" Toggle paste mode
+"--------
+" toggles
+"--------
+" toggle paste mode
   nnoremap <leader>pp :setlocal paste!<cr>
-" Toggle cursor line
+" toggle cursor line
   nnoremap <leader>Tc :set cursorline!<cr>
-" Toggle cursor line in all buffers in window
+" toggle cursor line in all buffers in window
   nnoremap <leader>TC :windo :set cursorline!<cr>
-" Toggle color coloumn
+" toggle color coloumn
   nnoremap <leader>Tl :call ColorColumnToggle()<cr>
-" Toggle wrap
+" toggle wrap
   nnoremap <leader>Tw :setlocal wrap!<cr>
-"----------------------------------------------------------------------------------------
-" Splits
-"----------------------------------------------------------------------------------------
-" Opening/Closing splits
+"-------
+" splits
+"-------
+" opening/closing splits
   nnoremap <leader>ss :vnew<cr>
   nnoremap <leader>sT :vsp<cr>
   nnoremap <leader>sS :sp<cr>
   nnoremap <leader>sb :new<cr>
   nnoremap <leader>sq :q!<cr>
   nnoremap <leader>sc :q<cr>
-" Easy split sizing
+" easy split sizing
   nnoremap <leader>sf :winc \|<cr>
   nnoremap <leader>se :winc =<cr>
   nnoremap <leader>so :winc o<cr>
   nnoremap <leader>st :winc T<cr>
   nnoremap <leader>sp :vertical resize +20<cr>
   nnoremap <leader>sm :vertical resize -20<cr>
-" Easy split movement
+" easy split movement
   nnoremap <leader>sJ :winc J<cr>
   nnoremap <leader>sK :winc K<cr>
   nnoremap <leader>sH :winc H<cr>
   nnoremap <leader>sL :winc L<cr>
-" Easy way to navigate between windows
+" easy way to navigate between windows
   nnoremap <leader>sj :winc j<cr>
   nnoremap <leader>sk :winc k<cr>
   nnoremap <leader>sh :winc h<cr>
   nnoremap <leader>sl :winc l<cr>
-"----------------------------------------------------------------------------------------
-" Tabs & Buffers
-"----------------------------------------------------------------------------------------
-" Tabs
+"---------------
+" tabs & buffers
+"---------------
+" tabs
   nnoremap <leader>tn :tabnew<cr>
   nnoremap <leader>to :tabonly<cr>
   nnoremap <leader>tc :tabclose<cr>
   nnoremap <leader>tm :tabmove<space>
-" Open new tab with the current buffer's path
+" open new tab with the current buffer's path
   nnoremap <leader>tt :tabedit <c-r>=expand("%:p:h")<cr>/
-" Buffers
+" buffers
   nnoremap <leader>b<leader> :bnext<cr>
   nnoremap <leader><leader>b :bprevious<cr>
   nnoremap <leader>bs :ls<cr>
-" Open new buffer with the current buffer's path
+" open new buffer with the current buffer's path
   nnoremap <leader>bb :e <c-r>=expand("%:p:h")<cr>/
   nnoremap <leader>bn :e <c-r>=expand("%:p:h")<cr>/
-" Close all the buffers
+" close all the buffers
   nnoremap <leader>ba :%bd<cr>
-"----------------------------------------------------------------------------------------
-" Spell check
-"----------------------------------------------------------------------------------------
-" Toggle spell checking
+"------------
+" spell check
+"------------
+" toggle spell checking
   nnoremap <leader>cc :setlocal spell!<cr>
   nnoremap <leader>cn ]s
   nnoremap <leader>cp [s
   nnoremap <leader>ca zg
   nnoremap <leader>c? z=
-"----------------------------------------------------------------------------------------
+"-----
 " tags
-"----------------------------------------------------------------------------------------
+"-----
   nnoremap <leader>ft :tag<space>
   nnoremap <leader>fT :tselect<cr>
   nnoremap <leader>fj g]
   nnoremap <leader>fu [I
   nnoremap <leader>t<leader> :tnext<cr>
   nnoremap <leader><leader>t :tprevious<cr>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  => Helper Functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Helper Functions
+""""""""""""""""""
+" visual mode pressing * or # searches for the current selection
+" super useful! From an idea by Michael Naumann
   function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
     execute "normal! vgvy"
@@ -242,7 +245,7 @@
     let @/ = l:pattern
     let @" = l:saved_reg
   endfunction
-" Automatically source vimrc on save
+" automatically source vimrc on save
   augroup autosourcing
     autocmd!
     autocmd BufWritePost ~/Code/DEC/vim/grc.vim source ~/.vimrc
@@ -251,18 +254,18 @@
     autocmd BufWritePost ~/Code/DEC/vim/rc.vim source ~/.vimrc
     autocmd BufWritePost ~/Code/DEC/vim/vundle.vim source ~/.vimrc
   augroup END
-" Returns true if paste mode is enabled
+" returns true if paste mode is enabled
   function! HasPaste()
     if &paste
       return 'PASTE MODE  '
     endif
     return ''
   endfunction
-" Make VIM remember position in file after reopen
+" make vim remember position in file after reopen
   if has("autocmd")
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
   endif
-" Highlight duplicates
+" highlight duplicates
 " http://stackoverflow.com/questions/1268032/marking-duplicate-lines
   function! HighlightRepeats() range
     let lineCounts = {}
@@ -281,7 +284,7 @@
       endif
     endfor
   endfunction
-" For highlighting SQL insert/value combos
+" for highlighting sql insert/value combos
   function! SetCursorBind()
     nnoremap <buffer> d :windo norm j<cr>
     nnoremap <buffer> f :windo norm k<cr>
@@ -290,7 +293,7 @@
     nnoremap <buffer> d d
     nnoremap <buffer> f f
   endfunction
-" Toggle color column
+" toggle color column
   function! ColorColumnToggle()
     if &colorcolumn
       setlocal colorcolumn=0
@@ -298,18 +301,15 @@
       setlocal colorcolumn=75
     endif
   endfunction
-"----------------------------------------------------------------------------------------
-" Saved macros
-"----------------------------------------------------------------------------------------
+"-------------
+" saved macros
+"-------------
   function! SurroundWithCommas()
     normal G$A',gvI'GA€kb
   endfunction
-  function! BreakSQLFunctionCall()
-    normal f(af,a;a;a;a;a;a;a;a;a;a;a;a;;a;af';if)ij
-  endfunction
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  => Sources
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Sources
+"""""""""
 " https://github.com/amix/vimrc
 " https://laracasts.com/series/vim-mastery
 " http://learnvimscriptthehardway.stevelosh.com

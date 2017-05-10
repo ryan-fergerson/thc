@@ -1,14 +1,14 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  Maintainer:
-"     Ryan Fergerson
-"     email@ryanf.tech
-"     http://ryanf.tech
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Maintainer:
+"  Ryan Fergerson
+"  email@ryanf.tech
+"  http://ryanf.tech
 "
-"  Version:
-"     2017.DC.7-1
-"     2017.DEVELOPING_CONFIGURATION.7-1
+" Version:
+"  2017.DC.8
+"  2017.DEVELOPING_CONFIGURATION.8
 "
-"  Sections:
+" Sections:
 "  -> dbext.vim
 "  -> The Silver Searcher
 "  -> ctrlp.vim
@@ -58,9 +58,9 @@
     " ag is fast enough that CtrlP doesn't need to cache
     let g:ctrlp_use_caching = 0
   endif
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  => ctrlp.vim
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ctrlp.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   let g:ctrlp_match_window = 'top,order:ttb,min:1,max:35,results:35'
   let g:ctrlp_brief_prompt = 1
   nnoremap <leader>ff :CtrlP<cr>
@@ -68,13 +68,13 @@
   nnoremap <leader>fr :CtrlPMRU<cr>
   nnoremap <leader>fx :CtrlPMixed<cr>
   nnoremap <leader>fm :CtrlPBufTag<cr>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  => ag
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ag
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   let g:ag_qhandler="vertical copen 100"
   nnoremap <leader>fa :Ag<space>
   nnoremap <leader>fq :call AgQuickFixWindow()<cr>
-" Reopen quickfix-window with bindings from ag.txt
+" reopen quickfix-window with bindings from ag.txt
   function! AgQuickFixWindow()
     :vertical cope 100
     nnoremap <silent> <buffer> h  <c-w><cr><c-w>K
@@ -86,21 +86,21 @@
     nnoremap <silent> <buffer> go <cr>:copen<cr>
     nnoremap <silent> <buffer> q  :cclose<cr>
   endfunction
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  => greplace.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" greplace.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   nnoremap <leader>rr :Gsearch<space>
   nnoremap <leader>rR :call GreplaceAndSave()<cr>
-" Global replace, save & quit
+" global replace, save & quit
   function! GreplaceAndSave()
     :Greplace
     :wall
     :q
   endfunction
   let g:grep_cmd_opts = '--line-number'
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  => fugitive.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" fugitive.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   nnoremap <silent> <leader>gg :Gstatus<cr> :winc L<cr>
   nnoremap <silent> <leader>gd :Gdiff<cr>
   nnoremap <silent> <leader>gw :Gblame<cr>
@@ -113,13 +113,13 @@
   nnoremap <silent> <leader>gh :help fugitive<cr>
   nnoremap <silent> <leader>gb :Git checkout<space>
   nnoremap <silent> <leader>gB :Git checkout -b<space>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  => gv.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" gv.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   nnoremap <silent> <leader>gl :GV<cr>
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"  => vim-gitgutter
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-gitgutter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   let g:gitgutter_override_sign_column_highlight = 0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-airline
