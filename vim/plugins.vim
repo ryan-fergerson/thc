@@ -18,6 +18,8 @@
 "  -> gv.vim
 "  -> vim-gitgutter
 "  -> vim-airline
+"  -> ultisnips
+"  -> supertab
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " dbext.vim
@@ -151,3 +153,16 @@
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
   let g:airline_theme='gruvbox'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ultisnips
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" trigger configuration
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<tab>"
+  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" if you want :UltiSnipsEdit to split your window
+  let g:UltiSnipsEditSplit="vertical"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" supertab
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  let g:SuperTabDefaultCompletionType = 'context'
