@@ -5,8 +5,8 @@
 "  http://ryanf.tech
 "
 " Version:
-"  2017.DC.8
-"  2017.DEVELOPING_CONFIGURATION.8
+"  2017.DC.8-1
+"  2017.DEVELOPING_CONFIGURATION.8-1
 "
 " Sections:
 "  -> Options
@@ -75,6 +75,11 @@
 " source vundle plugins and settings
   source ~/Code/DEC/vim/vundle.vim
   source ~/Code/DEC/vim/plugins.vim
+" source ignore directory
+  for file in split(glob('~/Code/DEC/ignore/*.vim'), '\n')
+      exe 'source' file
+  endfor
+  "source ~/Code/DEC/vim/ignore2.vim
   filetype plugin indent on
 " treat wrapped lines as new lines
   map j gj
