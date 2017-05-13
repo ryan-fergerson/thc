@@ -41,4 +41,5 @@
     Plugin 'tpope/vim-vinegar'
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-scripts/dbext.vim'
+    Plugin 'vimwiki/vimwiki'
   call vundle#end()
