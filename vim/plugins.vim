@@ -5,8 +5,8 @@
 "  http://ryanf.tech
 "
 " Version:
-"  2017.DC.8-1
-"  2017.DEVELOPING_CONFIGURATION.8-1
+"  2017.DC.8-2
+"  2017.DEVELOPING_CONFIGURATION.8-2
 "
 " Sections:
 "  -> dbext.vim
@@ -28,12 +28,14 @@
   let g:dbext_default_type = 'pgsql'
   let g:dbext_default_window_use_horiz = 0
   let g:dbext_default_window_width = 75
+  let g:dbext_default_use_sep_result_buffer = 1
+  exec 'let g:dbext_default_history_file = "' . g:thcRoot . 'omit/history.sql"'
 "------------------------------------------------------------------
 " Profiles
 " g:dbext_default_profile_'profilename' = 'var=value:var=value:...'
 "------------------------------------------------------------------
-" place in ignore.vim
-"--------------------
+" place profiles in omit directory
+"---------------------------------
 " Enable syntax highlighting in result buffer
   function! DBextPostResult(db_type, buf_nr)
     if a:db_type == 'PGSQL'

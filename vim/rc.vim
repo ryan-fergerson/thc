@@ -5,8 +5,8 @@
 "  http://ryanf.tech
 "
 " Version:
-"  2017.DC.8-1
-"  2017.DEVELOPING_CONFIGURATION.8-1
+"  2017.DC.8-2
+"  2017.DEVELOPING_CONFIGURATION.8-2
 "
 " Sections:
 "  -> Options
@@ -66,27 +66,32 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """""""""
-" spacebar is the largest key, making it the leader makes
-" it easy for ALL keys to be used for leader combinations
+" set root directory
+  let g:thcRoot = '~/Code/THC/vim/'
+"------------------------------------------------------
+" the spacebar is the largest key, making it the leader
+" enables ALL keys to be used for leader combinations
+"
 " see README.md for more information
 "
 " set before plugins.vim (for <leader> mappings)
   let mapleader = ' '
+"------------------------------------------------------
 " source vundle plugins and settings
-  source ~/Code/DEC/vim/vundle.vim
-  source ~/Code/DEC/vim/plugins.vim
-" source ignore directory
-  for file in split(glob('~/Code/DEC/ignore/*.vim'), '\n')
-      exe 'source' file
+  exec 'source ' . g:thcRoot . 'vundle.vim'
+  exec 'source ' . g:thcRoot . 'plugins.vim'
+" source private configuration
+  for file in split(glob(g:thcRoot . 'omit/*.vim'), '\n')
+    exe 'source' file
   endfor
-  "source ~/Code/DEC/vim/ignore2.vim
+" turn filetype on after vundle source
   filetype plugin indent on
 " treat wrapped lines as new lines
   map j gj
   map k gk
-" easy escape
-  inoremap <space><space> <esc>
-  vnoremap <space><space> <esc>
+" easy escape, use tab for indenting
+  inoremap <leader><leader> <esc>
+  vnoremap <leader><leader> <esc>
 " visual mode pressing * or # searches for the current selection
   vnoremap <silent> * :call VisualSelection('f', '')<cr>
   vnoremap <silent> # :call VisualSelection('b', '')<cr>
@@ -114,12 +119,13 @@
 " Leader Magic
 """"""""""""""
 " easy edit vimrc and plugins
-  nnoremap <leader>,, :tabedit ~/Code/DEC/vim/plugins.vim<bar>vsp ~/Code/DEC/vim/rc.vim<cr>
-  nnoremap <leader><< :tabedit ~/Code/DEC/vim/vundle.vim<bar>vsp ~/Code/DEC/vim/rc.vim<cr>
-  nnoremap <leader>,< :tabedit ~/Code/DEC/vim/vundle.vim<bar>vsp ~/Code/DEC/vim/plugins.vim<cr>
-  nnoremap <leader>,p :tabedit ~/Code/DEC/vim/plugins.vim<cr>
-  nnoremap <leader>,v :tabedit ~/Code/DEC/vim/rc.vim<cr>
   nnoremap <leader>,V :tabedit ~/.vimrc<cr>
+  nnoremap <leader>,s :source ~/.vimrc<cr>
+  exec 'nnoremap <leader>,, :tabedit ' . g:thcRoot . 'plugins.vim<bar>vsp ' g:thcRoot . 'rc.vim<cr>'
+  exec 'nnoremap <leader><< :tabedit ' . g:thcRoot . 'vundle.vim<bar>vsp '  g:thcRoot . 'rc.vim<cr>'
+  exec 'nnoremap <leader>,< :tabedit ' . g:thcRoot . 'vundle.vim<bar>vsp '  g:thcRoot . 'plugins.vim<cr>'
+  exec 'nnoremap <leader>,p :tabedit ' . g:thcRoot . 'plugins.vim<cr>'
+  exec 'nnoremap <leader>,v :tabedit ' . g:thcRoot . 'rc.vim<cr>'
 " fast help
   nnoremap <leader>hH :help<cr>:winc T<cr>
   nnoremap <leader>hh <c-]>
@@ -250,15 +256,6 @@
     let @/ = l:pattern
     let @" = l:saved_reg
   endfunction
-" automatically source vimrc on save
-  augroup autosourcing
-    autocmd!
-    autocmd BufWritePost ~/Code/DEC/vim/grc.vim source ~/.vimrc
-    autocmd BufWritePost ~/Code/DEC/vim/jetbrains.vim source ~/.vimrc
-    autocmd BufWritePost ~/Code/DEC/vim/plugins.vim source ~/.vimrc
-    autocmd BufWritePost ~/Code/DEC/vim/rc.vim source ~/.vimrc
-    autocmd BufWritePost ~/Code/DEC/vim/vundle.vim source ~/.vimrc
-  augroup END
 " returns true if paste mode is enabled
   function! HasPaste()
     if &paste
