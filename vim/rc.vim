@@ -95,16 +95,16 @@
 " visual mode pressing * or # searches for the current selection
   vnoremap <silent> * :call VisualSelection('f', '')<cr>
   vnoremap <silent> # :call VisualSelection('b', '')<cr>
+"--------------------
 " syntax highlighting
+"--------------------
   syntax enable
   set background=dark
   try
     colorscheme gruvbox
   catch
   endtry
-"------------------------
 " vim-gitgutter - gruvbox
-"------------------------
   highlight VertSplit ctermfg=245
   highlight VertSplit ctermbg=235
   highlight VertSplit guifg=#928374
@@ -118,9 +118,10 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Leader Magic
 """"""""""""""
-" easy edit vimrc and plugins
-  nnoremap <leader>,V :tabedit ~/.vimrc<cr>
+" easy source
   nnoremap <leader>,s :source ~/.vimrc<cr>
+" easy edit vim configuration files
+  nnoremap <leader>,V :tabedit ~/.vimrc<cr>
   exec 'nnoremap <leader>,, :tabedit ' . g:thcRoot . 'plugins.vim<bar>vsp ' g:thcRoot . 'rc.vim<cr>'
   exec 'nnoremap <leader><< :tabedit ' . g:thcRoot . 'vundle.vim<bar>vsp '  g:thcRoot . 'rc.vim<cr>'
   exec 'nnoremap <leader>,< :tabedit ' . g:thcRoot . 'vundle.vim<bar>vsp '  g:thcRoot . 'plugins.vim<cr>'
@@ -132,7 +133,7 @@
   nnoremap <leader>hb <c-o>
   nnoremap <leader>hf :help<space>
 " fast save
-  nnoremap <leader>w :w!<cr>
+  nnoremap <leader>,w :w!<cr>
 " easy visual-block mode
   nnoremap <leader>v <c-v>
 " easy redo (undo undo)
