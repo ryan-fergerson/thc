@@ -28,7 +28,7 @@
   set expandtab                  " 'et'     use spaces when <Tab> is inserted
   set fileformats=mac,unix,dos   " 'ffs'    automatically detected values for 'fileformat'
   set fillchars+=vert:\`         " 'fcs'    characters to use for displaying special items
-  set foldlevel=2                " 'fdl'    close folds with a level higher than this
+  set foldlevel=1                " 'fdl'    close folds with a level higher than this
   set foldmethod=indent          " 'fdm'    folding type
   set gdefault                   " 'gd'     the ':substitute' flag 'g' is default on
   set history=1000               " 'hi'     number of command-lines that are remembered
@@ -158,6 +158,9 @@
 " bind cursor in all windows
   nnoremap <leader>bc :call SetCursorBind()<cr>
   nnoremap <leader>br :windo :call RemoveCursorBind()<cr>
+" easy diff
+  nnoremap <leader>dt :windo diffthis<cr>
+  nnoremap <leader>df :windo diffoff<cr>
 "--------
 " toggles
 "--------
@@ -188,6 +191,8 @@
   nnoremap <leader>st :winc T<cr>
   nnoremap <leader>sp :vertical resize +20<cr>
   nnoremap <leader>sm :vertical resize -20<cr>
+  nnoremap <leader>sn :winc l<cr>:winc \|<cr>
+  nnoremap <leader>sN :winc h<cr>:winc \|<cr>
 " easy split movement
   nnoremap <leader>sJ :winc J<cr>
   nnoremap <leader>sK :winc K<cr>
