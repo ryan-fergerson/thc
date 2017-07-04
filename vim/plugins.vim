@@ -172,12 +172,14 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vimwiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  let g:vimwiki_list = [{
-    'path': g:thcRoot . 'omit/vimwiki/',
-    'syntax': 'markdown',
-    'ext': '.md',
-    'auto_toc': 1
-  }]
+  let g:vimwiki_list = [
+    \{ 
+      \'path'     : g:thcRoot . 'omit/vimwiki/',
+      \'syntax'   : 'markdown',
+      \'ext'      : '.md',
+      \'auto_toc' : 1
+    \}
+  \]
   let g:vimwiki_auto_chdir = 1
   "let g:vimwiki_map_prefix = '<Leader>e'
   let g:vimwiki_listsyms = '✗○◐●✓'
