@@ -172,4 +172,22 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vimwiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  let g:vimwiki_list = [{'path': g:thcRoot . 'omit/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+  let g:vimwiki_list = [{
+    'path': g:thcRoot . 'omit/vimwiki/',
+    'syntax': 'markdown',
+    'ext': '.md',
+    'auto_toc': 1
+  }]
+  let g:vimwiki_auto_chdir = 1
+  "let g:vimwiki_map_prefix = '<Leader>e'
+  let g:vimwiki_listsyms = '✗○◐●✓'
+  let g:vimwiki_hl_headers = 1
+  let g:vimwiki_hl_cb_checked = 1
+  let g:vimwiki_folding = 'list'
+" Colors
+" hi VimwikiHeader1 guifg=#FF0000
+" hi VimwikiHeader2 guifg=#00FF00
+" hi VimwikiHeader3 guifg=#0000FF
+" hi VimwikiHeader4 guifg=#FF00FF
+" hi VimwikiHeader5 guifg=#00FFFF
+" hi VimwikiHeader6 guifg=#FFFF00
