@@ -5,8 +5,8 @@
 "  http://ryanf.tech
 "
 " Version:
-"  2017.DC.8-2
-"  2017.DEVELOPING_CONFIGURATION.8-2
+"  2017.DC.9
+"  2017.DEVELOPING_CONFIGURATION.9
 "
 " Sections:
 "  -> Options
@@ -74,7 +74,7 @@
 "
 " see README.md for more information
 "
-" set before plugins.vim (for <leader> mappings)
+" set before plugins.vim (for leader mappings)
   let mapleader = ' '
 "------------------------------------------------------
 " source vundle plugins and settings
@@ -92,7 +92,7 @@
 " easy escape, use tab for indenting
   inoremap <leader><leader> <esc>
   vnoremap <leader><leader> <esc>
-" visual mode pressing * or # searches for the current selection
+" visual mode, pressing * or # searches for the current selection
   vnoremap <silent> * :call VisualSelection('f', '')<cr>
   vnoremap <silent> # :call VisualSelection('b', '')<cr>
 "--------------------
@@ -128,10 +128,15 @@
   exec 'nnoremap <leader>,p :tabedit ' . g:thcRoot . 'plugins.vim<cr>'
   exec 'nnoremap <leader>,v :tabedit ' . g:thcRoot . 'rc.vim<cr>'
 " fast help
-  nnoremap <leader>hH :help<cr>:winc T<cr>
-  nnoremap <leader>hh <c-]>
-  nnoremap <leader>hb <c-o>
+  nnoremap <leader>hH :tab help<cr>
+" help find
   nnoremap <leader>hf :help<space>
+" help here (jump into/through links in help)
+  nnoremap <leader>hh <c-]>
+" help jump back
+  nnoremap <leader>hb <c-o>
+" fast jump to index.txt (ALL commands)
+  nnoremap <leader>hi :tab help index.txt<cr>
 " fast save
   nnoremap <leader>,w :w!<cr>
 " easy visual-block mode
@@ -148,32 +153,33 @@
   nnoremap <leader>ee :e ~/buffer.md<cr>
 " switch CWD to the directory of the open buffer
   nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+" easy diff
+  nnoremap <leader>dt :windo diffthis<cr>
+  nnoremap <leader>df :windo diffoff<cr>
+" insert date
+  nnoremap <leader>id "=strftime('%Y%m%d')<cr>P
 " mark duplicate lines
   nnoremap <leader>td :%call HighlightRepeats()<cr>
   nnoremap <leader>tD :call HighlightRepeats()<cr>
-" insert date
-  nnoremap <leader>id "=strftime('%Y%m%d')<cr>P
 " surround with single quotes and comma
   nnoremap <leader>;q :call SurroundWithCommas()<cr>
 " bind cursor in all windows
   nnoremap <leader>bc :call SetCursorBind()<cr>
   nnoremap <leader>br :windo :call RemoveCursorBind()<cr>
-" easy diff
-  nnoremap <leader>dt :windo diffthis<cr>
-  nnoremap <leader>df :windo diffoff<cr>
 "--------
 " toggles
 "--------
-" toggle paste mode
-  nnoremap <leader>pp :setlocal paste!<cr>
-" toggle cursor line
-  nnoremap <leader>Tc :set cursorline!<cr>
-" toggle cursor line in all buffers in window
-  nnoremap <leader>TC :windo :set cursorline!<cr>
-" toggle color coloumn
-  nnoremap <leader>Tl :call ColorColumnToggle()<cr>
 " toggle wrap
-  nnoremap <leader>Tw :setlocal wrap!<cr>
+  nnoremap <leader>;w :setlocal wrap!<cr>
+" toggle paste mode
+  nnoremap <leader>;p :setlocal paste!<cr>
+" toggle cursor line
+  nnoremap <leader>;c :set cursorline!<cr>
+" toggle cursor line in all buffers in window
+  nnoremap <leader>;C :windo :set cursorline!<cr>
+" toggle color coloumn
+  nnoremap <leader>;L :call ColorColumnToggle()<cr>
+  nnoremap <leader>;l :set cursorcolumn!<cr>
 "-------
 " splits
 "-------
@@ -191,8 +197,6 @@
   nnoremap <leader>st :winc T<cr>
   nnoremap <leader>sp :vertical resize +20<cr>
   nnoremap <leader>sm :vertical resize -20<cr>
-  nnoremap <leader>sn :winc l<cr>:winc \|<cr>
-  nnoremap <leader>sN :winc h<cr>:winc \|<cr>
 " easy split movement
   nnoremap <leader>sJ :winc J<cr>
   nnoremap <leader>sK :winc K<cr>
@@ -203,6 +207,8 @@
   nnoremap <leader>sk :winc k<cr>
   nnoremap <leader>sh :winc h<cr>
   nnoremap <leader>sl :winc l<cr>
+  nnoremap <leader>sn :winc l<cr>:winc \|<cr>
+  nnoremap <leader>sN :winc h<cr>:winc \|<cr>
 "---------------
 " tabs & buffers
 "---------------
@@ -240,9 +246,25 @@
   nnoremap <leader>fu [I
   nnoremap <leader>t<leader> :tnext<cr>
   nnoremap <leader><leader>t :tprevious<cr>
+"------------------------
+" views-sessions-projects
+"------------------------
+  nnoremap <leader>;; :call SaveProject("")<left><left>
+  nnoremap <leader>;: :call LoadProject("")<left><left>
+" switching sessions
+" :nmap <F2> :wa<Bar>exe "mksession! " . v:this_session<CR>:so ~/sessions/
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helper Functions
 """"""""""""""""""
+  function! SaveProject(projectName)
+    exec 'silent !mkdir ' . g:thcRoot . 'omit/vimwiki/sessions/' . a:projectName . '> /dev/null 2>&1'
+    exec 'mksession! '    . g:thcRoot . 'omit/vimwiki/sessions/' . a:projectName . '/session.vim'
+    exec 'wviminfo! '     . g:thcRoot . 'omit/vimwiki/sessions/' . a:projectName . '/session.viminfo'
+  endfunction
+  function! LoadProject(projectName)
+    exec 'rviminfo! ' . g:thcRoot . 'omit/vimwiki/sessions/' . a:projectName . '/session.viminfo'
+    exec 'source '    . g:thcRoot . 'omit/vimwiki/sessions/' . a:projectName . '/session.vim'
+  endfunction
 " visual mode pressing * or # searches for the current selection
 " super useful! From an idea by Michael Naumann
   function! VisualSelection(direction, extra_filter) range

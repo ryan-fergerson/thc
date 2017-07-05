@@ -5,8 +5,8 @@
 "  http://ryanf.tech
 "
 " Version:
-"  2017.DC.8-2
-"  2017.DEVELOPING_CONFIGURATION.8-2
+"  2017.DC.9
+"  2017.DEVELOPING_CONFIGURATION.9
 "
 " Sections:
 "  -> dbext.vim
@@ -181,7 +181,6 @@
     \}
   \]
   let g:vimwiki_auto_chdir = 1
-  "let g:vimwiki_map_prefix = '<Leader>e'
   let g:vimwiki_listsyms = '✗○◐●✓'
   let g:vimwiki_hl_headers = 1
   let g:vimwiki_hl_cb_checked = 1

@@ -1,35 +1,44 @@
 # Vim Configuration
+* font: FiraCode
+* colorscheme: Gruvbox
 
-## Clone repo
+## Features
+* Leader system
+* Shared/Private configuration
+
+## Installation
+
+**Clone repo**
 ``` sh
-git clone https://github.com/RyanFergerson/DEC.git
+git clone https://github.com/RyanFergerson/THC.git
 ```
-## Place inside ~/.vimrc
+**Place inside ~/.vimrc**
 ``` sh
-source ~/Code/DEC/vim/rc.vim
+source ~/Code/THC/vim/rc.vim
 ```
-## Place inside ~/.gvimrc (for MacVim/gVim)
+**Place inside ~/.gvimrc (for MacVim/gVim)**
 ``` sh
-source ~/Code/DEC/vim/grc.vim
+source ~/Code/THC/vim/grc.vim
 ```
-## Place inside ~/.ideavimrc (for JetBrains)
+**Place inside ~/.ideavimrc (for JetBrains)**
 ``` sh
-source ~/Code/DEC/vim/jetbrains.vim
+source ~/Code/THC/vim/jetbrains.vim
 ```
-## Install Vundle
+**Install Vundle**
 ``` sh
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
-## Install Plugins
+**Install Plugins**
 ``` vim
 :PluginInstall
 ```
 
-# Leader system
+## Leader system
 
-## A leader key with two characters can (with just the alphabet alone) create 456,976 key combinations!
+**A leader key with two characters can (with just the alphabet alone) create 456,976 key combinations!**
+
 Case sensitve, mixed case characters make different commands
-*  <leader>ff
-*  <leader>FF
-*  <leader>Ff
-*  <leader>fF
+* \<leader\>ff
+* \<leader\>FF
+* \<leader\>Ff
+* \<leader\>fF
