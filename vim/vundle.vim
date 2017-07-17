@@ -28,6 +28,7 @@
     Plugin 'chrisbra/csv.vim'
     Plugin 'craigemery/vim-autotag'
     Plugin 'ctrlpvim/ctrlp.vim'
+    Plugin 'easymotion/vim-easymotion'
     Plugin 'ervandew/supertab'
     Plugin 'godlygeek/tabular'
     Plugin 'honza/vim-snippets'

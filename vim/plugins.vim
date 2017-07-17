@@ -21,6 +21,7 @@
 "  -> ultisnips
 "  -> supertab
 "  -> vimwiki
+"  -> easymotion
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " dbext.vim
@@ -163,12 +164,19 @@
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" if you want :UltiSnipsEdit to split your window
   let g:UltiSnipsEditSplit="vertical"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " supertab
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   let g:SuperTabDefaultCompletionType = 'context'
+  let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+  let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+  let g:SuperTabContextDiscoverDiscovery =
+      \ ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+  autocmd FileType *
+    \ if &omnifunc != '' |
+    \   call SuperTabChain(&omnifunc, "<tab>") |
+    \ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vimwiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -192,3 +200,7 @@
 " hi VimwikiHeader4 guifg=#FF00FF
 " hi VimwikiHeader5 guifg=#00FFFF
 " hi VimwikiHeader6 guifg=#FFFF00
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" easymotion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  let g:EasyMotion_smartcase = 1
