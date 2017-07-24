@@ -5,8 +5,8 @@
 "  http://ryanf.tech
 "
 " Version:
-"  2017.DC.9
-"  2017.DEVELOPING_CONFIGURATION.9
+"  2017.LABX.10
+"  2017.LABORATORY_EXPERIMENTS.10
 "
 " Sections:
 "  -> Options
@@ -90,8 +90,8 @@
   map j gj
   map k gk
 " easy escape, use tab for indenting
-  inoremap <leader><leader> <esc>
-  vnoremap <leader><leader> <esc>
+  inoremap <leader><leader><leader> <esc>
+  vnoremap <leader><leader><leader> <esc>
 " visual mode, pressing * or # searches for the current selection
   vnoremap <silent> * :call VisualSelection('f', '')<cr>
   vnoremap <silent> # :call VisualSelection('b', '')<cr>
@@ -102,19 +102,19 @@
   set background=dark
   try
     colorscheme gruvbox
+" vim-gitgutter - gruvbox
+    highlight VertSplit ctermfg=245
+    highlight VertSplit ctermbg=235
+    highlight VertSplit guifg=#928374
+    highlight VertSplit guibg=#282828
+    highlight CursorLineNR guibg=#282828
+    highlight clear SignColumn
+    highlight GitGutterAdd guibg=#282828 guifg=#689d6a
+    highlight GitGutterDelete guibg=#282828 guifg=#fb4934
+    highlight GitGutterChange guibg=#282828 guifg=#fe8019
+    highlight GitGutterChangeDelete guibg=#282828 guifg=#fabd2f
   catch
   endtry
-" vim-gitgutter - gruvbox
-  highlight VertSplit ctermfg=245
-  highlight VertSplit ctermbg=235
-  highlight VertSplit guifg=#928374
-  highlight VertSplit guibg=#282828
-  highlight CursorLineNR guibg=#282828
-  highlight clear SignColumn
-  highlight GitGutterAdd guibg=#282828 guifg=#689d6a
-  highlight GitGutterDelete guibg=#282828 guifg=#fb4934
-  highlight GitGutterChange guibg=#282828 guifg=#fe8019
-  highlight GitGutterChangeDelete guibg=#282828 guifg=#fabd2f
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Leader Magic
 """"""""""""""
@@ -335,7 +335,7 @@
 " saved macros
 "-------------
   function! SurroundWithCommas()
-    normal G$A',gvI'GA€kb
+    normal G$A',gvI'GAÂ€kb
   endfunction
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sources

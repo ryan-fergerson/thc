@@ -5,8 +5,8 @@
 "  http://ryanf.tech
 "
 " Version:
-"  2017.DC.9
-"  2017.DEVELOPING_CONFIGURATION.9
+"  2017.LABX.10
+"  2017.LABORATORY_EXPERIMENTS.10
 "
 " Sections:
 "  -> dbext.vim
@@ -22,11 +22,13 @@
 "  -> supertab
 "  -> vimwiki
 "  -> easymotion
+"  -> Emmet
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " dbext.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   let g:dbext_map_prefix = '<leader>d'
+  let g:dbext_default_passwd_use_secret = 1
   let g:dbext_default_type = 'pgsql'
   let g:dbext_default_window_use_horiz = 0
   let g:dbext_default_window_width = 75
@@ -184,8 +186,7 @@
     \{ 
       \'path'     : g:thcRoot . 'omit/vimwiki/',
       \'syntax'   : 'markdown',
-      \'ext'      : '.md',
-      \'auto_toc' : 1
+      \'ext'      : '.md'
     \}
   \]
   let g:vimwiki_auto_chdir = 1
@@ -193,6 +194,7 @@
   let g:vimwiki_hl_headers = 1
   let g:vimwiki_hl_cb_checked = 1
   let g:vimwiki_folding = 'list'
+" [[ind<C-X><C-O>
 " Colors
 " hi VimwikiHeader1 guifg=#FF0000
 " hi VimwikiHeader2 guifg=#00FF00
@@ -204,3 +206,7 @@
 " easymotion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   let g:EasyMotion_smartcase = 1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Emmet
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  let g:user_emmet_leader_key = '<leader>;'

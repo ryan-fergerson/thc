@@ -5,8 +5,8 @@
 "  http://ryanf.tech
 "
 " Version:
-"  2017.DC.9
-"  2017.DEVELOPING_CONFIGURATION.9
+"  2017.LABX.10
+"  2017.LABORATORY_EXPERIMENTS.10
 "
 " Sections:
 "  -> Options
