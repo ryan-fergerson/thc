@@ -42,6 +42,7 @@
     Plugin 'rking/ag.vim'
     Plugin 'sirver/ultisnips'
     Plugin 'skwp/greplace.vim'
+    Plugin 'tpope/vim-abolish'
     Plugin 'tpope/vim-commentary'
     Plugin 'tpope/vim-fugitive'
     Plugin 'tpope/vim-repeat'
