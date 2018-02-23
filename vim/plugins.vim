@@ -182,20 +182,27 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vimwiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  let g:vimwiki_list = [
-    \{ 
-      \'path'     : g:thcRoot . 'omit/vimwiki/',
-      \'syntax'   : 'markdown',
-      \'ext'      : '.md'
-    \}
-  \]
+  let clock_clerk = {}
+  let clock_clerk.path   = g:thcRoot . 'omit/vimwiki/clock-clerk/'
+  let clock_clerk.syntax = 'markdown'
+  let clock_clerk.index  = 'index'
+  let clock_clerk.ext    = '.md'
+
+  let ryanftech_study = {}
+  let ryanftech_study.path   = g:thcRoot . 'omit/vimwiki/ryanftech_study/'
+  let ryanftech_study.syntax = 'markdown'
+  let ryanftech_study.index  = 'index'
+  let ryanftech_study.ext    = '.md'
+
+  let g:vimwiki_list = [clock_clerk,ryanftech_study]
+
   let g:vimwiki_auto_chdir = 1
+  let g:vimwiki_folding = 'expr'
   let g:vimwiki_listsyms = '✗○◐●✓'
-  let g:vimwiki_hl_headers = 1
-  let g:vimwiki_hl_cb_checked = 1
-  let g:vimwiki_folding = 'list'
-" [[ind<C-X><C-O>
+
 " Colors
+"nmap -- <Plug>VimwikiRemoveHeaderLevel
+"map <Leader>tt <Plug>VimwikiToggleListItem
 " hi VimwikiHeader1 guifg=#FF0000
 " hi VimwikiHeader2 guifg=#00FF00
 " hi VimwikiHeader3 guifg=#0000FF
