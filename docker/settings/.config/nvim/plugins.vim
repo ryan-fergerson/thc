@@ -15,6 +15,42 @@
 "  -> easymotion
 "  -> Emmet
 "  -> ack
+""""""""""
+" vim-plug
+""""""""""
+  call plug#begin()
+    Plug 'airblade/vim-gitgutter'
+    Plug 'alcesleo/vim-uppercase-sql'
+    Plug 'arcticicestudio/nord-vim'
+    Plug 'chrisbra/csv.vim'
+    Plug 'craigemery/vim-autotag'
+    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'easymotion/vim-easymotion'
+    Plug 'elzr/vim-json'
+    Plug 'ervandew/supertab'
+    Plug 'godlygeek/tabular'
+    "Plug 'honza/vim-snippets'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'junegunn/gv.vim'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'majutsushi/tagbar'
+    Plug 'mattn/emmet-vim'
+    Plug 'mileszs/ack.vim'
+    Plug 'morhetz/gruvbox'
+    Plug 'mustache/vim-mustache-handlebars'
+    Plug 'plasticboy/vim-markdown'
+    "Plug 'sirver/ultisnips'
+    Plug 'skwp/greplace.vim'
+    Plug 'tpope/vim-abolish'
+    Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-unimpaired'
+    Plug 'tpope/vim-vinegar'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vundlevim/vundle.vim'
+  call plug#end()
 """""""""""
 " dbext.vim
 """""""""""

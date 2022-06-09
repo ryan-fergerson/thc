@@ -8,22 +8,26 @@
 
 ## Installation
 
-**Clone repo**
+### 1. Clone repo into .config directory
 ``` sh
-git clone https://github.com/RyanFergerson/THC.git
+git clone https://github.com/ryan-fergerson/thc.git
 ```
+
+### 2. Load settings
 **Place inside ~/.vimrc**
 ``` sh
-source ~/Code/THC/vim/rc.vim
+source ~/Code/thc/vim/runtime-configuration.vim
 ```
 **Place inside ~/.gvimrc (for MacVim/gVim)**
 ``` sh
-source ~/Code/THC/vim/grc.vim
+source ~/Code/thc/vim/gui-rc.vim
 ```
 **Place inside ~/.ideavimrc (for JetBrains)**
 ``` sh
-source ~/Code/THC/vim/jetbrains.vim
+source ~/Code/thc/vim/jetbrains.vim
 ```
+
+### 3. Install Vundle & plugins
 **Install Vundle**
 ``` sh
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim

@@ -1,21 +1,11 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer:
-"  Ryan Fergerson
-"  email@ryanf.tech
-"  http://ryanf.tech
-"
-" Version:
-"  2017.LABX.10
-"  2017.LABORATORY_EXPERIMENTS.10
-"
-" Sections:
+""""""""""""""""""""""""""
+" Content:
 "  -> Options
 "  -> General
 "  -> Leader Magic
 "  -> Helper Functions
 "  -> Sources
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""
 " Options
 """""""""
   set autoindent                 " 'ai'     take indent for new line from previous line
@@ -28,8 +18,7 @@
   set expandtab                  " 'et'     use spaces when <Tab> is inserted
   set fileformats=mac,unix,dos   " 'ffs'    automatically detected values for 'fileformat'
   set fillchars+=vert:\`         " 'fcs'    characters to use for displaying special items
-  set foldlevel=1                " 'fdl'    close folds with a level higher than this
-  set foldmethod=indent          " 'fdm'    folding type
+  set nofoldenable               " 'nofdl'  disable folds
   set gdefault                   " 'gd'     the ':substitute' flag 'g' is default on
   set history=1000               " 'hi'     number of command-lines that are remembered
   set hlsearch                   " 'hls'    highlight matches with last search pattern
@@ -63,35 +52,42 @@
   set viminfo^=%                 " 'vi'	    use .viminfo file upon startup and exiting
   set visualbell                 " 'vb'     use visual bell instead of beeping
   set wrapscan                   " 'ws'     searches wrap around the end of the file
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  set showtabline=0	             " 'stal'   tells when the tab pages line is displayed
+  set path+=**                   " 'pa'	    list of directories searched with "gf" et.al.
+  set wildmenu                   " 'wmnu'   use menu for command line completion
+  set wildignore+=3rdParty/**,*.class,*.jar,**/build/**,**/target/**
+""""""""""""""""""""""""""
 " General
 """""""""
 " set root directory
-  let g:thcRoot = '~/Code/THC/vim/'
-"------------------------------------------------------
+  let g:thcRoot = '~/.config/thc/vim/'
+
 " the spacebar is the largest key, making it the leader
 " enables ALL keys to be used for leader combinations
-"
 " see README.md for more information
-"
-" set before plugins.vim (for leader mappings)
+" set leader before plugins.vim (for leader mappings)
   let mapleader = ' '
-"------------------------------------------------------
+
 " source vundle plugins and settings
   exec 'source ' . g:thcRoot . 'vundle.vim'
   exec 'source ' . g:thcRoot . 'plugins.vim'
+
 " source private configuration
   for file in split(glob(g:thcRoot . 'omit/*.vim'), '\n')
     exe 'source' file
   endfor
+
 " turn filetype on after vundle source
   filetype plugin indent on
+
 " treat wrapped lines as new lines
   map j gj
   map k gk
+
 " easy escape, use tab for indenting
-  inoremap <leader><leader><leader> <esc>
-  vnoremap <leader><leader><leader> <esc>
+  inoremap <leader><leader> <esc>
+  vnoremap <leader><leader> <esc>
+
 " visual mode, pressing * or # searches for the current selection
   vnoremap <silent> * :call VisualSelection('f', '')<cr>
   vnoremap <silent> # :call VisualSelection('b', '')<cr>
@@ -102,7 +98,10 @@
   set background=dark
   try
     colorscheme gruvbox
+    "colorscheme nord
+"------------------------
 " vim-gitgutter - gruvbox
+"------------------------
     highlight VertSplit ctermfg=245
     highlight VertSplit ctermbg=235
     highlight VertSplit guifg=#928374
@@ -115,93 +114,134 @@
     highlight GitGutterChangeDelete guibg=#282828 guifg=#fabd2f
   catch
   endtry
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""
 " Leader Magic
 """"""""""""""
 " easy source
   nnoremap <leader>,s :source ~/.vimrc<cr>
+
+" easy options
+  nnoremap <leader>,o :options<cr>:winc T<cr>
+
 " easy edit vim configuration files
   nnoremap <leader>,V :tabedit ~/.vimrc<cr>
-  exec 'nnoremap <leader>,, :tabedit ' . g:thcRoot . 'plugins.vim<bar>vsp ' g:thcRoot . 'rc.vim<cr>'
-  exec 'nnoremap <leader><< :tabedit ' . g:thcRoot . 'vundle.vim<bar>vsp '  g:thcRoot . 'rc.vim<cr>'
-  exec 'nnoremap <leader>,< :tabedit ' . g:thcRoot . 'vundle.vim<bar>vsp '  g:thcRoot . 'plugins.vim<cr>'
   exec 'nnoremap <leader>,p :tabedit ' . g:thcRoot . 'plugins.vim<cr>'
-  exec 'nnoremap <leader>,v :tabedit ' . g:thcRoot . 'rc.vim<cr>'
+  exec 'nnoremap <leader>,v :tabedit ' . g:thcRoot . 'runtime-configuration.vim<cr>'
+  exec 'nnoremap <leader>,t :tabedit ~/.tmux.conf.local<cr>'
+
 " fast help
   nnoremap <leader>hH :tab help<cr>
+
 " help find
   nnoremap <leader>hf :help<space>
+
 " help here (jump into/through links in help)
   nnoremap <leader>hh <c-]>
+
 " help jump back
   nnoremap <leader>hb <c-o>
+
 " fast jump to index.txt (ALL commands)
   nnoremap <leader>hi :tab help index.txt<cr>
+
 " fast save
   nnoremap <leader>,w :w!<cr>
+
 " easy visual-block mode
   nnoremap <leader>v <c-v>
+
 " easy redo (undo undo)
   nnoremap <leader>u <c-r>
+
 " disable highlight
   nnoremap <leader><cr> :noh<cr>
+
 " easy marks (jump to exact spot)
   nnoremap <leader>jj `
+
 " easy marks (jump to line)
   nnoremap <leader>jl '
+
+" wild search files
+" https://www.reddit.com/r/vim/comments/8p51l6/get_result_of_find_command_up_in_a_quickfix/
+  nnoremap <leader>aa :args<cr>
+  nnoremap <leader>af :args `find . -name '' -print`<left><left><left><left><left><left><left><left><left>
+  nnoremap <leader>a<leader> :n<cr>
+  nnoremap <leader><leader>a :prev<cr>
+
+" go to downloads
+  nnoremap <leader>'d :Explore! ~/Downloads<cr>:redraw<cr>/
+  nnoremap <leader>'t :Explore! ~/Code/scripts/tickets<cr>:redraw<cr>/
+  nnoremap <leader>'s :Explore! ~/Code/scripts<cr>:redraw<cr>/
+
 " quickly open a markdown buffer for scribble
   nnoremap <leader>ee :e ~/buffer.md<cr>
+
 " switch CWD to the directory of the open buffer
   nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+
 " easy diff
   nnoremap <leader>dt :windo diffthis<cr>
   nnoremap <leader>df :windo diffoff<cr>
+
 " insert date
   nnoremap <leader>id "=strftime('%Y%m%d')<cr>P
+
 " mark duplicate lines
   nnoremap <leader>td :%call HighlightRepeats()<cr>
   nnoremap <leader>tD :call HighlightRepeats()<cr>
-" surround with single quotes and comma
-  nnoremap <leader>;q :call SurroundWithCommas()<cr>
+
 " bind cursor in all windows
   nnoremap <leader>bc :call SetCursorBind()<cr>
   nnoremap <leader>br :windo :call RemoveCursorBind()<cr>
+
 "--------
 " toggles
 "--------
 " toggle wrap
   nnoremap <leader>;w :setlocal wrap!<cr>
+
 " toggle paste mode
   nnoremap <leader>;p :setlocal paste!<cr>
+
 " toggle cursor line
   nnoremap <leader>;c :set cursorline!<cr>
+
 " toggle cursor line in all buffers in window
   nnoremap <leader>;C :windo :set cursorline!<cr>
+
 " toggle color coloumn
   nnoremap <leader>;L :call ColorColumnToggle()<cr>
   nnoremap <leader>;l :set cursorcolumn!<cr>
+
+" toggle list
+  nnoremap <leader>;s :set list!<cr>
+
 "-------
 " splits
 "-------
 " opening/closing splits
   nnoremap <leader>ss :vnew<cr>
-  nnoremap <leader>sT :vsp<cr>
-  nnoremap <leader>sS :sp<cr>
-  nnoremap <leader>sb :new<cr>
+  nnoremap <leader>sS :new<cr>
+  nnoremap <leader>sb :sp<cr>
+  nnoremap <leader>st :vsp<cr>
   nnoremap <leader>sq :q!<cr>
-  nnoremap <leader>sc :q<cr>
+  nnoremap <leader>sc :close<cr>
+
 " easy split sizing
   nnoremap <leader>sf :winc \|<cr>
   nnoremap <leader>se :winc =<cr>
   nnoremap <leader>so :winc o<cr>
-  nnoremap <leader>st :winc T<cr>
+  nnoremap <leader>sT :winc T<cr>
   nnoremap <leader>sp :vertical resize +20<cr>
   nnoremap <leader>sm :vertical resize -20<cr>
+
 " easy split movement
   nnoremap <leader>sJ :winc J<cr>
   nnoremap <leader>sK :winc K<cr>
   nnoremap <leader>sH :winc H<cr>
   nnoremap <leader>sL :winc L<cr>
+
 " easy way to navigate between windows
   nnoremap <leader>sj :winc j<cr>
   nnoremap <leader>sk :winc k<cr>
@@ -209,25 +249,37 @@
   nnoremap <leader>sl :winc l<cr>
   nnoremap <leader>sn :winc l<cr>:winc \|<cr>
   nnoremap <leader>sN :winc h<cr>:winc \|<cr>
+
 "---------------
 " tabs & buffers
 "---------------
 " tabs
+  nnoremap <leader>tt :tabs<cr>
   nnoremap <leader>tn :tabnew<cr>
   nnoremap <leader>to :tabonly<cr>
   nnoremap <leader>tc :tabclose<cr>
   nnoremap <leader>tm :tabmove<space>
+
 " open new tab with the current buffer's path
-  nnoremap <leader>tt :tabedit <c-r>=expand("%:p:h")<cr>/
+  nnoremap <leader>tT :tabedit <c-r>=expand("%:p:h")<cr>/
+
 " buffers
   nnoremap <leader>b<leader> :bnext<cr>
   nnoremap <leader><leader>b :bprevious<cr>
-  nnoremap <leader>bs :ls<cr>
+  nnoremap <leader>bb :ls<cr>
+
 " open new buffer with the current buffer's path
-  nnoremap <leader>bb :e <c-r>=expand("%:p:h")<cr>/
   nnoremap <leader>bn :e <c-r>=expand("%:p:h")<cr>/
+
+" buffer close
+  nnoremap <leader>bq :bd<cr>
+
+" buffer show
+  nnoremap <leader>bs :unhide<cr>
+
 " close all the buffers
   nnoremap <leader>ba :%bd<cr>
+
 "------------
 " spell check
 "------------
@@ -237,6 +289,7 @@
   nnoremap <leader>cp [s
   nnoremap <leader>ca zg
   nnoremap <leader>c? z=
+
 "-----
 " tags
 "-----
@@ -246,100 +299,46 @@
   nnoremap <leader>fu [I
   nnoremap <leader>t<leader> :tnext<cr>
   nnoremap <leader><leader>t :tprevious<cr>
+
 "------------------------
 " views-sessions-projects
 "------------------------
   nnoremap <leader>;; :call SaveProject("")<left><left>
   nnoremap <leader>;: :call LoadProject("")<left><left>
+
+  nnoremap <leader>;f :call QuoteNumberList()<cr>
+
 " switching sessions
 " :nmap <F2> :wa<Bar>exe "mksession! " . v:this_session<CR>:so ~/sessions/
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Helper Functions
-""""""""""""""""""
-  function! SaveProject(projectName)
-    exec 'silent !mkdir ' . g:thcRoot . 'omit/vimwiki/sessions/' . a:projectName . '> /dev/null 2>&1'
-    exec 'mksession! '    . g:thcRoot . 'omit/vimwiki/sessions/' . a:projectName . '/session.vim'
-    exec 'wviminfo! '     . g:thcRoot . 'omit/vimwiki/sessions/' . a:projectName . '/session.viminfo'
-  endfunction
-  function! LoadProject(projectName)
-    exec 'rviminfo! ' . g:thcRoot . 'omit/vimwiki/sessions/' . a:projectName . '/session.viminfo'
-    exec 'source '    . g:thcRoot . 'omit/vimwiki/sessions/' . a:projectName . '/session.vim'
-  endfunction
-" visual mode pressing * or # searches for the current selection
-" super useful! From an idea by Michael Naumann
-  function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-    if a:direction == 'b'
-      execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
-      call CmdLine("Ag \"" . l:pattern . "\" " )
-    elseif a:direction == 'replace'
-      call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-      execute "normal /" . l:pattern . "^M"
-    endif
-    let @/ = l:pattern
-    let @" = l:saved_reg
-  endfunction
-" returns true if paste mode is enabled
-  function! HasPaste()
-    if &paste
-      return 'PASTE MODE  '
-    endif
-    return ''
-  endfunction
-" make vim remember position in file after reopen
-  if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-  endif
-" highlight duplicates
-" http://stackoverflow.com/questions/1268032/marking-duplicate-lines
-  function! HighlightRepeats() range
-    let lineCounts = {}
-    let lineNum = a:firstline
-    while lineNum <= a:lastline
-      let lineText = getline(lineNum)
-      if lineText != ""
-        let lineCounts[lineText] = (has_key(lineCounts, lineText) ? lineCounts[lineText] : 0) + 1
-      endif
-      let lineNum = lineNum + 1
-    endwhile
-    exe 'syn clear Repeat'
-    for lineText in keys(lineCounts)
-      if lineCounts[lineText] >= 2
-        exe 'syn match Repeat "^' . escape(lineText, '".\^$*[]') . '$"'
-      endif
-    endfor
-  endfunction
-" for highlighting sql insert/value combos
-  function! SetCursorBind()
-    nnoremap <buffer> d :windo norm j<cr>
-    nnoremap <buffer> f :windo norm k<cr>
-  endfunction
-  function! RemoveCursorBind()
-    nnoremap <buffer> d d
-    nnoremap <buffer> f f
-  endfunction
-" toggle color column
-  function! ColorColumnToggle()
-    if &colorcolumn
-      setlocal colorcolumn=0
-    else
-      setlocal colorcolumn=75
-    endif
-  endfunction
-"-------------
-" saved macros
-"-------------
-  function! SurroundWithCommas()
-    normal G$A',gvI'GAkb
-  endfunction
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""
+" Helper Functions & Autocmds
+"""""""""""""""""""""""""""""
+" source functions
+  for file in split(glob(g:thcRoot . 'functions/*.vim'), '\n')
+    exe 'source' file
+  endfor
+
+" source autocmds
+  for file in split(glob(g:thcRoot . 'autocmds/*.vim'), '\n')
+    exe 'source' file
+  endfor
+""""""""""""""""""""""""""
 " Sources
 """""""""
 " https://github.com/amix/vimrc
 " https://laracasts.com/series/vim-mastery
 " http://learnvimscriptthehardway.stevelosh.com
+
+" https://github.com/alacritty/alacritty/issues/2185
+" Horizontal Scrolling
+set sidescroll=1
+set sidescrolloff=10
+noremap <C-ScrollWheelDown> 10zl
+noremap <C-2-ScrollWheelDown> 10zl
+noremap <C-3-ScrollWheelDown> 10zl
+noremap <C-4-ScrollWheelDown> 10zl
+noremap <C-ScrollWheelUp> 10zh
+noremap <C-2-ScrollWheelUp> 10zh
+noremap <C-3-ScrollWheelUp> 10zh
+noremap <C-4-ScrollWheelUp> 10zh

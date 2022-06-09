@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+psql <<EOF
+SELECT 1;
+EOF

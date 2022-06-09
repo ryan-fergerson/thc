@@ -1,32 +1,46 @@
 # Tips Hacks Configuration
 
-## Why?
-This repo was made for getting my developer environment set up quickly
-across different computers; it also serves as an area to swiftly add new
-techniques as I discover them (or lookup) and share them seamlessly between
-remote and local computers.
+## Ideal workflow
+* Responsive - fast commands (keyboard shortcuts, helpful shell functions, window navigation)
+* Configurable - easy to adjust for current workload
+* Efficient - minimal keystrokes and mental overhead
 
-I use macOS both at home and at work and Ubuntu for my remote computers so
-my setups are primarily Unix based (although I plan to get a working setup
-in Windows too).
+## Overview
+Repo for getting personal developer environments based on task or language stack context set up quickly.
 
 ## Environment
-* ZSH
-* Vim
-* Git
-* PostgreSQL 
-* IntelliJ Idea
+* Alacritty (terminal emulator)
+* Docker (containers)
+* Fonts (hack-nerd-font, fira-code, victor-mono)
+* Git | git-worktree (source code version control)
+* Google Chrome (web browser)
+* JetBrains | IntelliJ Idea, DataGrip, WebStorm, Toolbox (editors)
+* Microsoft Office
+* Neovim (editor)
+* PostgreSQL (database)
+* Zsh (shell)
+* ansible (simple IT automation)
+* exa (ls replacement)
+* fd (find replacement)
+* fzf (fuzzy file finder)
+* tmux (terminal multiplexer)
 
-## Productivity Tools
+## Tools for productivity 
 * Goals & Reflection
-  + Daily, Monthly, Yearly, 5 years, 10 years
-* Calendar
+  + Daily
+  + Monthly
+  + Yearly
+  + 5 years
+  + 10 years
+* Calendar (time-specific only)
 * Timer (promodo)
-* GTD (centralized inbox)
+* GTD - Getting Things Done (centralized inbox)
   + Inbox zero (personal tasks)
 * Task list (context based)
-  + Phase shift reminders
+* Workspaces
+* Window management
+* Code Katas
+* Reminders
 
-### Building..
-* Mnemonics
-* Steplist
+## Inspiration
+* [My Developer Workflow - How I use i3, tmux, and vim | ThePrimeagen](https://youtu.be/bdumjiHabhQ)
