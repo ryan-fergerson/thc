@@ -1,0 +1,37 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.alacritty.yml: tech/alacritty.yml
+    ~/.gitconfig: tech/gitconfig
+    ~/.psqlrc: tech/psqlrc
+    ~/.zshenv: tech/zshenv
+    ~/.zshrc: tech/zshrc
+    ~/.config/tmux:
+      create: true
+      path: tech/tmux
+    ~/.config/nvim:
+      create: true
+      path: tech/nvim
+    ~/.local/bin:
+      create: true
+      path: scripts
+
+- create:
+    - ~/code
+    - ~/test
+
+- shell:
+    - command: ./scripts/setup-homebrew.zsh
+      stdin: true
+      stdout: true
+      stderr: true
+    - command: ./scripts/setup-tmux.zsh
+      stdout: true
+      stderr: true
+    - command: ./scripts/setup-neovim.zsh
+      stdout: true
+      stderr: true

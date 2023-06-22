@@ -1,0 +1,24 @@
+export HOMEBREW_CASK_OPTS="--no-quarantine --no-binaries"
+export EDITOR=nvim
+export VISUAL="$EDITOR"
+export N_PREFIX="$HOME/.n"
+export PREFIX="$N_PREFIX"
+export BAT_THEME="gruvbox-dark"
+export TERM=alacritty
+
+export PATH=/opt/homebrew/bin:$PATH
+export PATH=/opt/homebrew/opt/postgresql@14/bin:$PATH
+export PATH=/Users/ryan.fergerson/.local/bin:$PATH
+
+setopt HIST_IGNORE_SPACE
+
+set -o emacs
+
+exists() {
+  # `command -v` is similar to `which`
+  # https://stackoverflow.com/a/677212/1341838
+  command -v $1 >/dev/null 2>&1
+
+  # More explicitly written:
+  # command -v $1 1>/dev/null 2>/dev/null
+}
