@@ -5,7 +5,7 @@
 - clean: ['~']
 
 - link:
-    ~/.alacritty.yml: tech/alacritty.yml
+    ~/.alacritty.toml: tech/alacritty.toml
     ~/.gitconfig: tech/gitconfig
     ~/.psqlrc: tech/psqlrc
     ~/.zshenv: tech/zshenv
