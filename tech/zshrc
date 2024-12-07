@@ -8,10 +8,10 @@ testOne[qa]="host2.example.com"
 ###########
 # ALIASES #
 ###########
-alias  l="exa -laFh --git --icons"
-alias ll="exa -laFh --git --icons"
-alias ls="exa -laFh --git --icons"
-alias lt="exa -T"
+alias  l="eza -l -a- F -h --git --icons"
+alias ll="eza -l -a -F -h --git --icons"
+alias ls="eza --oneline --reverse --sort=size"
+alias lt="eza -T"
 alias vi="nvim"
 alias vim="nvim"
 alias man=batman
@@ -38,3 +38,4 @@ fi
 
 # Key bindings
 source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+

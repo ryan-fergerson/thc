@@ -9,9 +9,6 @@
 -- TOGGLES
 -- ; and a ("semi-colon switch", a mirrors)
 
-------------
--- LEADER --
-------------
 vim.g.mapleader = ' '
 
 local function map(mode, lhs, rhs, opts)
@@ -53,7 +50,6 @@ m('<Space>', '<NOP>')
 -- Treat wrapped lines as new lines
 m('j', 'gj')
 m('k', 'gk')
-m('k', 'gk')
 
 -- Easy escape
 n('<C-Space>', '<ESC>')
@@ -76,8 +72,8 @@ n('<Leader>,o', ':options<CR>:winc T<CR>')
 n('<Leader>xo', ':options<CR>:winc T<CR>')
 
 -- Easy source
-n('<Leader>,s', ':luafile %<CR>')
-n('<Leader>xs', ':luafile %<CR>')
+n('<Leader>,r', ':luafile %<CR>')
+n('<Leader>xr', ':luafile %<CR>')
 
 -- Easy edit vim configuration files
 n('<Leader>,v', ':tabedit ~/.config/nvim/lua/remaps.lua<CR> :vsp ~/.config/nvim/lua/options.lua<CR> :winc h<CR> 0gg')
@@ -129,6 +125,14 @@ n('<Leader>hb', '<c-o>')
 -- fast jump to index.txt (ALL commands)
 n('<Leader>,i', ':tab help index.txt<CR>')
 n('<Leader>xi', ':tab help index.txt<CR>')
+n('<Leader>,ff', ':set ft=<CR>')
+n('<Leader>xff', ':set ft=<CR>')
+n('<Leader>,fm', ':set ft=markdown<CR>')
+n('<Leader>xfm', ':set ft=markdown<CR>')
+n('<Leader>,fj', ':set ft=javascript<CR>')
+n('<Leader>xfj', ':set ft=javascript<CR>')
+n('<Leader>,fn', ':set ft=json<CR>')
+n('<Leader>xfn', ':set ft=json<CR>')
 
 -----------
 -- MARKS --
@@ -160,12 +164,26 @@ n('<Leader>id', '"=strftime(\'%Y%m%d\')<CR>P')
 ------------
 -- SEARCH --
 ------------
+--vim.keymap.set("n", "<Leader>/s", function()
+--  --vim.cmd [[execute "insert \<Plug>delimitMateCR"]]
+--  vim.cmd[[execute "\<plug>(fzf-complete-word)"]]
+--end)
+
+n('<Leader>/g', ':GFiles<CR>')
+n('<Leader>zg', ':GFiles<CR>')
 n('<Leader>/d', ':Files ~/Downloads<CR>')
 n('<Leader>zd', ':Files ~/Downloads<CR>')
-n('<Leader>/c', ':Files ~/code<CR>')
-n('<Leader>zc', ':Files ~/code<CR>')
-n('<Leader>/f', ':Rg!') -- 'f'ull-text
-n('<Leader>zf', ':Rg!') -- 'f'ull-text
+n('<Leader>/s', ':Files ~/code<CR>')
+n('<Leader>zs', ':Files ~/code<CR>')
+n('<Leader>/c', ':Commits<CR>')
+n('<Leader>zc', ':Commits<CR>')
+
+local function ripgrep()
+  return ":Rg! " .. vim.fn.input("ripgrep> ") .. "<cr>"
+end
+
+vim.keymap.set('n', '<Leader>zf', ripgrep, { expr = true })
+vim.keymap.set('n', '<Leader>/f', ripgrep, { expr = true })
 
 -------------
 -- TOGGLES --
@@ -199,8 +217,8 @@ n('<Leader>as', ':set list!<CR>')
 -- SPLITS --
 ------------
 -- opening/closing splits
-n('<Leader>ss', ':vnew<CR>')
-n('<Leader>sS', ':new<CR>')
+n('<Leader>ss', ':new<CR>')
+n('<Leader>sv', ':vnew<CR>')
 n('<Leader>st', ':vsp<CR>')
 n('<Leader>sT', ':sp<CR>')
 n('<Leader>sq', ':q!<CR>')
@@ -282,23 +300,3 @@ n('<Leader>c?', 'z=')
 -- switching sessions
 -- :nmap <F2> :wa<Bar>exe "mksession! " . v:this_session<CR>:so ~/sessions/
 
-------------------------
--- GIT | fugitive.vim --
-------------------------
-n('<leader>gg', ':Git<cr> :winc L<cr>')
-n('<leader>gd', ':Gdiff<cr>')
-n('<leader>gp', ':Git pull --rebase<cr>')
-n('<leader>gP', ':Git push<cr>')
-n('<leader>gr', ':Gread<cr>')
-n('<leader>gw', ':Gwrite<cr>')
-n('<leader>ge', ':Gedit<cr>')
-n('<leader>ga', ':Git add -p %<cr>')
-n('<leader>gh', ':help fugitive<cr>')
-n('<leader>gb', ':Git checkout<Space>')
-n('<leader>gB', ':Git checkout -b<Space>')
-
---
--- fzf
---
-vim.api.nvim_set_var('fzf_layout', { window = '-tabnew' })
---vim.api.nvim_set_var('fzf_preview_window', {'down,95%,noborder', 'Ctrl-p'})

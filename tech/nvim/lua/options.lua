@@ -20,6 +20,7 @@ o.wrap=false
 o.wrapscan=true
 o.writebackup=true
 o.undofile=true
+o.timeout=false
 
 o.cmdheight=1
 o.laststatus=3
@@ -29,11 +30,16 @@ o.showtabline=0
 o.softtabstop=2
 o.tabstop=2
 o.undolevels=1000
-o.timeout=false
 o.sidescrolloff=10
+o.foldnestmax=3
+o.foldlevel=3
 
 o.fileformats='unix'
 o.mouse='a'
+o.signcolumn='no'
+o.foldmethod='indent'
+o.complete = '.,w,b,u,t,kspell'
+o.completeopt = {"menu", "menuone", "noselect"}
 
 o.undodir=os.getenv( "HOME" ) .. '/.config/nvim/undo'
 o.backupdir=os.getenv( "HOME" ) .. '/.config/nvim/backup'
@@ -52,3 +58,4 @@ o.listchars = {
 
 -- netrw
 vim.g.netrw_sizestyle = 'H'
+

@@ -9,6 +9,7 @@ export TERM=alacritty
 export PATH=/opt/homebrew/bin:$PATH
 export PATH=/opt/homebrew/opt/postgresql@14/bin:$PATH
 export PATH=/Users/ryan.fergerson/.local/bin:$PATH
+export PATH=$PATH:$HOME/go/bin
 
 setopt HIST_IGNORE_SPACE
 
