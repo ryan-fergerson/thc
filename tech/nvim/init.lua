@@ -1,5 +1,5 @@
+require('globals')
 require('options')
 require('remaps')
 require('colors')
 require('plugin-manager')
-require('globals')

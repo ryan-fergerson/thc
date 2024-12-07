@@ -11,33 +11,6 @@
 
 vim.g.mapleader = ' '
 
-local function map(mode, lhs, rhs, opts)
-  local options = { noremap = true, silent = true }
-
-  if opts then
-    options = vim.tbl_extend('force', options, opts)
-  end
-
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
-local function n(lhs, rhs, opts)
-  map('n', lhs, rhs, opts)
-end
-
-local function v(lhs, rhs, opts)
-  map('v', lhs, rhs, opts)
-end
-
-local function i(lhs, rhs, opts)
-  map('i', lhs, rhs, opts)
-end
-
--- multi, many, mixed
-local function m(lhs, rhs, opts)
-  map('', lhs, rhs, opts)
-end
-
 -----------
 -- UNMAP --
 -----------
